@@ -12,7 +12,7 @@ endif()
 project ("Engine3D")
 
 # Add source to this project's executable.
-add_executable (Engine3D "Engine3D.cpp" "Engine3D.h" "Geometry/Mesh.cpp" "Geometry/Vertex.cpp" "Geometry/Model.cpp" "Core/Buffer.cpp" "Core/Camera.cpp" "Render/Render.cpp" "Math/Math.cpp" "Core/Buffer.h" "Core/Camera.h" "Geometry/Model.h" "Geometry/Mesh.h" "Geometry/Vertex.h" "Render/Render.h" "Scene/Scene.h" "Math/Math.h")
+add_executable (Engine3D "Engine3D.cpp" "Engine3D.h" "Geometry/Mesh.cpp" "Geometry/Vertex.cpp" "Geometry/Model.cpp" "Core/Buffer.cpp" "Core/Camera.cpp" "Render/Render.cpp" "Math/Math.cpp" "Pipeline/Pipeline.cpp" "Scene/Scene.cpp" "Core/Buffer.h" "Core/Camera.h" "Geometry/Model.h" "Geometry/Mesh.h" "Geometry/Vertex.h" "Render/Render.h" "Scene/Scene.h" "Math/Math.h" "Pipeline/Pipeline.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property (TARGET Engine3D PROPERTY CXX_STANDARD 20)

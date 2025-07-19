@@ -9,7 +9,7 @@ public:
   std::vector<Model *> models;
 
   Scene() = default;
-  ~Scene();
+  ~Scene() = default;
   void addModel(Model *m);
   void removeModel(Model *m);
   void clearModels();

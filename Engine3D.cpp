@@ -7,6 +7,8 @@
 #include "Geometry/Mesh.h"
 #include "Geometry/Model.h"
 #include "Math/Math.h"
+#include "Pipeline/Pipeline.h"
+#include "Scene/Scene.h"
 #include <cstdlib>
 #include <windows.h>
 using namespace std;
@@ -37,14 +39,20 @@ int main() {
   }*/
   Camera cam = Camera(Vec3(0, 0, -5), Vec3(0, 0, 0), Vec3(0, 1, 0), 15, 35, -10,
                       10, 10, -10);
-
+  Scene scene;
+  scene.camera = &cam;
+  scene.addModel(&model);
+  Pipeline p;
   for (size_t i = 0; i < ibo.getSize(); i++) {
-    Vec4 b = cam.getProjectionMatrix() * cam.getViewMatrix() *
-             model.getWorldMatrix() *
-             Vec4(vbo[ibo[i]].positon.x, vbo[ibo[i]].positon.y,
+
+    Vec4 a = Vec4(vbo[ibo[i]].positon.x, vbo[ibo[i]].positon.y,
                   vbo[ibo[i]].positon.z, 1);
-    Vec4 c = Vec4(b.x / b.w, b.y / b.w, b.z / b.w, 1);
-    Vec4 res = Mat4::viewport(0, 0, 100, 50, 0, 1) * c;
+
+    Vec4 b = p.vertexShader(a, scene.models[0]->getWorldMatrix(),
+                            scene.camera->getViewMatrix(),
+                            scene.camera->getProjectionMatrix());
+
+    Vec3 res = p.toScreen(100, 50, b);
     gotoXY((int)res.x, (int)res.y);
     cout << "#";
     /*cout << "X:" << vbo[ibo[i]].positon.x << " Y:" << vbo[ibo[i]].positon.y
