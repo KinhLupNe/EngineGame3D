@@ -1,0 +1,12 @@
+# ninja log v6
+19	384	7745580462581394	CMakeFiles/Engine3D.dir/Core/Buffer.cpp.obj	5641eec38b14d952
+17	243	7745580462556263	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
+12	155	7739074344179294	CMakeFiles/Engine3D.dir/Geometry/Vertex.cpp.obj	4084812e40bb2ba1
+35	657	7745498299259983	CMakeFiles/Engine3D.dir/Core/Camera.cpp.obj	8464e1de8fbda467
+16	164	7745585061526876	CMakeFiles/Engine3D.dir/Math/Math.cpp.obj	780be7fc37ce033b
+22	397	7742984001020578	CMakeFiles/Engine3D.dir/Render/Render.cpp.obj	73bd05e007e4e4bc
+15	361	7745580462546204	CMakeFiles/Engine3D.dir/Geometry/Mesh.cpp.obj	58f803c1fea566b6
+9	435	7745587415876382	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+436	565	7745587420141846	Engine3D.exe	79029fffe20de611
+10	442	7745587669968321	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+443	571	7745587674287862	Engine3D.exe	79029fffe20de611
