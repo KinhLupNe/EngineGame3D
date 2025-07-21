@@ -1,14 +1,15 @@
 # ninja log v6
-22	705	7747353503162959	CMakeFiles/Engine3D.dir/Core/Buffer.cpp.obj	5641eec38b14d952
-20	559	7747353503142931	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
 12	155	7739074344179294	CMakeFiles/Engine3D.dir/Geometry/Vertex.cpp.obj	4084812e40bb2ba1
-24	408	7747353503182939	CMakeFiles/Engine3D.dir/Core/Camera.cpp.obj	8464e1de8fbda467
-27	469	7747353503218116	CMakeFiles/Engine3D.dir/Math/Math.cpp.obj	780be7fc37ce033b
+21	468	7748304774554753	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
+24	634	7748304774574778	CMakeFiles/Engine3D.dir/Core/Buffer.cpp.obj	5641eec38b14d952
+26	309	7748304774599868	CMakeFiles/Engine3D.dir/Core/Camera.cpp.obj	8464e1de8fbda467
 22	397	7742984001020578	CMakeFiles/Engine3D.dir/Render/Render.cpp.obj	73bd05e007e4e4bc
-17	692	7747353503117785	CMakeFiles/Engine3D.dir/Geometry/Mesh.cpp.obj	58f803c1fea566b6
-13	890	7747353503072602	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
-629	820	7747305807950202	Engine3D.exe	cbf138f99a0de249
-24	456	7746444169231923	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
-33	656	7747353503276259	CMakeFiles/Engine3D.dir/Scene/Scene.cpp.obj	88acc1d9b0d9b0c6
-13	263	7747354023482460	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
-263	423	7747354025991651	Engine3D.exe	cbf138f99a0de249
+29	373	7748304774634140	CMakeFiles/Engine3D.dir/Math/Math.cpp.obj	780be7fc37ce033b
+19	629	7748304774524755	CMakeFiles/Engine3D.dir/Geometry/Mesh.cpp.obj	58f803c1fea566b6
+15	905	7748304774487768	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+906	1082	7748304783392530	Engine3D.exe	cbf138f99a0de249
+33	725	7748304774674136	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
+37	610	7748304774704144	CMakeFiles/Engine3D.dir/Scene/Scene.cpp.obj	88acc1d9b0d9b0c6
+17	462	7748305269179146	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
+13	634	7748305269143940	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+635	798	7748305275353886	Engine3D.exe	cbf138f99a0de249

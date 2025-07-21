@@ -17,6 +17,7 @@ public:
 
   void rotationVec3(float radX, float radY, float radZ);
   Vec3 normalize();
+  static float crossPro(const Vec3 &a, const Vec3 &b, const Vec3 &c);
 };
 
 class Vec4 {
@@ -28,8 +29,12 @@ public:
 
   Vec4();
   Vec4(float x, float y, float z, float w);
+  Vec4 operator+(const Vec4 &other) const;
+  Vec4 operator-(const Vec4 &other) const;
+  Vec4 operator*(const float &t) const;
   ~Vec4();
 };
+
 class Mat4 {
 public:
   float m[4][4];

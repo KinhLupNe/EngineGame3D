@@ -27,11 +27,25 @@ Vec3 Vec3::normalize() {
   return res;
 }
 
+float Vec3::crossPro(const Vec3 &a, const Vec3 &b, const Vec3 &c) {
+  return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+}
 Vec4::Vec4(float x, float y, float z, float w) {
   this->x = x;
   this->y = y;
   this->z = z;
   this->w = w;
+}
+Vec4 Vec4::operator+(const Vec4 &other) const {
+  return Vec4(this->x + other.x, this->y + other.y, this->z + other.z,
+              this->w + other.w);
+}
+Vec4 Vec4::operator-(const Vec4 &other) const {
+  return Vec4(this->x - other.x, this->y - other.y, this->z - other.z,
+              this->w - other.w);
+}
+Vec4 Vec4::operator*(const float &t) const {
+  return Vec4(this->x * t, this->y * t, this->z * t, this->w * t);
 }
 void Vec3::rotationVec3(float radX, float radY, float radZ) {
   float cosy = cos(radX);
