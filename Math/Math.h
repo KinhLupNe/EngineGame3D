@@ -2,6 +2,15 @@
 #define MATH_H
 
 #include <cmath>
+class Vec2 {
+public:
+  float x;
+  float y;
+
+  Vec2() = default;
+  ~Vec2() = default;
+  Vec2(float x, float y);
+};
 class Vec3 {
 public:
   float x;
@@ -14,6 +23,7 @@ public:
   ~Vec3();
 
   Vec3 operator*(const Vec3 &other) const;
+  Vec3 operator+(const Vec3 &other) const;
 
   void rotationVec3(float radX, float radY, float radZ);
   Vec3 normalize();
@@ -54,6 +64,12 @@ public:
                          const float &l, const float &t, const float &b);
   static Mat4 viewport(const float &x, const float &y, const float &w,
                        const float &h, const float &n, const float &f);
+};
+// tam giác trong không gian 4d
+struct Triangle {
+  Vec4 v0;
+  Vec4 v1;
+  Vec4 v2;
 };
 
 #endif

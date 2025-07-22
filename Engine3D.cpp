@@ -8,12 +8,15 @@
 #include "Geometry/Model.h"
 #include "Math/Math.h"
 #include "Pipeline/Pipeline.h"
+#include "Render/Render.h"
 #include "Scene/Scene.h"
+#include <conio.h>
 #include <cstdlib>
 #include <vector>
 #include <windows.h>
 using namespace std;
-
+#define WIDTH 300
+#define HEIGHT 100
 void gotoXY(int x, int y) {
   COORD coord;
   coord.X = x;
@@ -36,29 +39,55 @@ int main() {
   hide_cursor();
   Mesh cube = Mesh::createCube(12, 12, 12);
   Model model(&cube);
-  model.position = Vec3(0, 0, 26);
-  model.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
   Buffer buffer;
-  buffer.loadFromMesh(cube);
-  IndexBuffer ibo = buffer.getIBO();
-  VertexBuffer vbo = buffer.getVBO();
-  system("cls");
+  IndexBuffer ibo;
+  VertexBuffer vbo;
+  Pipeline p;
 
-  /*for (int i = 0; i < 4; i++) {
-    for (int j = 0; j < 4; j++) {
-      cout << model.getWorldMatrix().m[i][j] << " ";
-    }
-    cout << endl;
-  }*/
+  buffer.loadFromMesh(cube);
+  ibo = buffer.getIBO();
+  vbo = buffer.getVBO();
+
   Camera cam = Camera(Vec3(0, 0, -5), Vec3(0, 0, 0), Vec3(0, 1, 0), 15, 45, -12,
                       12, 12, -12);
   Scene scene;
   scene.camera = &cam;
+
+  model.position = Vec3(10, 0, 26);
+  model.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
   scene.addModel(&model);
-  Pipeline p;
 
   vector<Vec4> clipVers;
   while (true) {
+    system("cls");
+
+    if (_kbhit()) {
+      char ch = _getch();
+      if (ch == 'a') {
+        scene.models[0]->position = scene.models[0]->position + Vec3(1, 0, 0);
+      }
+      if (ch == 's')
+        model.position = model.position + Vec3(0, 1, 0);
+      if (ch == 'd')
+        model.position = model.position + Vec3(-1, 0, 0);
+
+      if (ch == 'w')
+        model.position = model.position + Vec3(0, -1, 0);
+
+      if (ch == 'z')
+        model.position = model.position + Vec3(0, 0, 1);
+
+      if (ch == 'c')
+        model.position = model.position + Vec3(0, 0, -1);
+    }
+
+    /*for (int i = 0; i < 4; i++) {
+for (int j = 0; j < 4; j++) {
+     cout << model.getWorldMatrix().m[i][j] << " ";
+   }
+   cout << endl;
+ }*/
+    clipVers.clear();
     for (size_t i = 0; i < vbo.getSize(); i++) {
       Vec4 a = Vec4(vbo[i].positon.x, vbo[i].positon.y, vbo[i].positon.z, 1);
 
@@ -95,34 +124,52 @@ int main() {
       //
     }*/
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i <= WIDTH; i++) {
       gotoXY(i, 0);
       cout << "#";
-      gotoXY(i, 39);
+      gotoXY(i, HEIGHT);
       cout << "#";
     }
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i <= HEIGHT; i++) {
       gotoXY(0, i);
       cout << "#";
-      gotoXY(99, i);
+      gotoXY(WIDTH, i);
       cout << "#";
     }
     for (auto &i : tris) {
       if (p.backFaceCull(i) == true) {
         // cout << "x: " << i.v0.x << "y:" << i.v0.y << "z: " << i.v0.z
         // << "w:" << i.v0.w << endl;
-        Vec3 res0 = p.toScreen(100, 40, i.v0);
 
-        Vec3 res1 = p.toScreen(100, 40, i.v1);
+        vector<Triangle> temp = p.primitiveClipping(i);
+        gotoXY(120, 20);
+        // cout << "So tam giac sau khi cat :" << temp.size();
+        for (auto &i : temp) {
 
-        Vec3 res2 = p.toScreen(100, 40, i.v2);
+          Vec3 res0 = p.toScreen(WIDTH, HEIGHT, i.v0);
 
-        gotoXY((int)res0.x, (int)res0.y);
-        cout << "#";
-        gotoXY((int)res1.x, (int)res1.y);
-        cout << "#";
-        gotoXY((int)res2.x, (int)res2.y);
-        cout << "#";
+          Vec3 res1 = p.toScreen(WIDTH, HEIGHT, i.v1);
+
+          Vec3 res2 = p.toScreen(WIDTH, HEIGHT, i.v2);
+
+          vector<Vec2> t = getLinePoints(res0, res1);
+          for (auto j : t) {
+            gotoXY((int)j.x, (int)j.y);
+            cout << "#";
+          }
+
+          t = getLinePoints(res1, res2);
+          for (auto j : t) {
+            gotoXY((int)j.x, (int)j.y);
+            cout << "#";
+          }
+
+          t = getLinePoints(res2, res0);
+          for (auto j : t) {
+            gotoXY((int)j.x, (int)j.y);
+            cout << "#";
+          }
+        }
         // cout << "x :" << res0.x << "y: " << res0.y << "z:" << res0.z << endl;
         // cout << "x :" << res1.x << "y: " << res1.y << "z:" << res1.z << endl;
         // cout << "x :" << res2.x << "y: " << res2.y << "z:" << res2.z << endl;
@@ -132,6 +179,7 @@ int main() {
     //  gotoXY((int)res.x, (int)res.y);
     // cout << "#";
     cout << endl;
+    Sleep(50);
   }
   return 0;
 }

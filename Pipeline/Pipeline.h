@@ -5,9 +5,6 @@
 #include <cstdint>
 #include <vector>
 
-struct Triangle {
-  Vec4 v0, v1, v2;
-};
 struct Pipeline {
   // Vertex shader : Lay ma toa trong trong khong gian phoi canh
   static Vec4 vertexShader(const Vec4 &vertex, const Mat4 &modelMatrix,
@@ -19,6 +16,10 @@ struct Pipeline {
 
   // culling backspace;
   static bool backFaceCull(const Triangle &tri);
+
+  // triangle primitive clipping
+  // nằm ngoài trả về rỗng
+  static std::vector<Triangle> primitiveClipping(const Triangle &tri);
 
   // clip ->ndc->viewport
   static Vec3 toScreen(const int &width, const int &height,

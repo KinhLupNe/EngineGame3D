@@ -1,4 +1,5 @@
 #include "Pipeline.h"
+#include "Culling.h"
 #include <iostream>
 #include <vector>
 Vec4 Pipeline::vertexShader(const Vec4 &vertex, const Mat4 &modelMatrix,
@@ -36,7 +37,11 @@ bool Pipeline::backFaceCull(const Triangle &tri) {
       Vec3(tri.v2.x / tri.v2.w, tri.v2.y / tri.v2.w, tri.v2.z / tri.v2.w);
   return Vec3::crossPro(ndcVer[0], ndcVer[1], ndcVer[2]) >= 0.0f;
 }
-// culling line
+// triangle primitive clipping
+
+std::vector<Triangle> Pipeline::primitiveClipping(const Triangle &tri) {
+  return clipTriangle(tri);
+}
 
 Vec3 Pipeline::toScreen(const int &width, const int &height,
                         const Vec4 &clipVertex) {
