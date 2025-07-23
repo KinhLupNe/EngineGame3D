@@ -46,7 +46,7 @@ bool clipLineOnePlane(Vec4 &a, Vec4 &b, int plane) {
     fb = b.x - b.w;
     break;
   case 3:
-    fa = a.y + a.y;
+    fa = a.y + a.w;
     fb = b.y + b.w;
     break;
   case 4:

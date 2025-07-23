@@ -1,15 +1,15 @@
 # ninja log v6
-23	537	7749198545775206	CMakeFiles/Engine3D.dir/Core/Buffer.cpp.obj	5641eec38b14d952
-21	380	7749198545755171	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
 12	155	7739074344179294	CMakeFiles/Engine3D.dir/Geometry/Vertex.cpp.obj	4084812e40bb2ba1
+21	380	7749198545755171	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
+23	537	7749198545775206	CMakeFiles/Engine3D.dir/Core/Buffer.cpp.obj	5641eec38b14d952
 25	271	7749198545800303	CMakeFiles/Engine3D.dir/Core/Camera.cpp.obj	8464e1de8fbda467
-30	328	7749198545840498	CMakeFiles/Engine3D.dir/Math/Math.cpp.obj	780be7fc37ce033b
 28	452	7749198545820429	CMakeFiles/Engine3D.dir/Render/Render.cpp.obj	73bd05e007e4e4bc
+30	328	7749198545840498	CMakeFiles/Engine3D.dir/Math/Math.cpp.obj	780be7fc37ce033b
 19	523	7749198545735181	CMakeFiles/Engine3D.dir/Geometry/Mesh.cpp.obj	58f803c1fea566b6
-12	662	7749203618849599	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
-662	821	7749203625344602	Engine3D.exe	3fdd7bd6afc0e62c
-32	611	7749198545870480	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
+11	618	7749974306885584	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+618	777	7749974312951318	Engine3D.exe	3fdd7bd6afc0e62c
+12	358	7749301614840096	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
 38	511	7749198545920946	CMakeFiles/Engine3D.dir/Scene/Scene.cpp.obj	88acc1d9b0d9b0c6
-35	697	7749198545900487	CMakeFiles/Engine3D.dir/Pipeline/Culling.cpp.obj	309a8b36e3b3d55
-12	619	7749205627774042	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
-620	776	7749205633841172	Engine3D.exe	3fdd7bd6afc0e62c
+15	488	7749973347044848	CMakeFiles/Engine3D.dir/Pipeline/Culling.cpp.obj	309a8b36e3b3d55
+11	624	7749975604625174	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+624	789	7749975610749113	Engine3D.exe	3fdd7bd6afc0e62c

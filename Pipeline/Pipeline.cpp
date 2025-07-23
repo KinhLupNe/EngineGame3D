@@ -45,7 +45,7 @@ std::vector<Triangle> Pipeline::primitiveClipping(const Triangle &tri) {
 
 Vec3 Pipeline::toScreen(const int &width, const int &height,
                         const Vec4 &clipVertex) {
-  Mat4 a = Mat4::viewport(0, 0, width, height, 0, 1);
+  Mat4 a = Mat4::viewport(2, 2, width, height, 0, 1);
   // clip-> ndcVertex
   Vec4 ndcVertex =
       Vec4(clipVertex.x / clipVertex.w, clipVertex.y / clipVertex.w,

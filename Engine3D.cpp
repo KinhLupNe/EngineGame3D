@@ -15,8 +15,8 @@
 #include <vector>
 #include <windows.h>
 using namespace std;
-#define WIDTH 300
-#define HEIGHT 100
+#define WIDTH 600
+#define HEIGHT 200
 void gotoXY(int x, int y) {
   COORD coord;
   coord.X = x;
@@ -81,6 +81,8 @@ int main() {
         model.position = model.position + Vec3(0, 0, -1);
     }
 
+    model.rotation = model.rotation + Vec3(3.14 / 40, 3.14 / 40, 3.14 / 40);
+
     /*for (int i = 0; i < 4; i++) {
 for (int j = 0; j < 4; j++) {
      cout << model.getWorldMatrix().m[i][j] << " ";
@@ -124,18 +126,19 @@ for (int j = 0; j < 4; j++) {
       //
     }*/
 
-    for (int i = 0; i <= WIDTH; i++) {
-      gotoXY(i, 0);
-      cout << "#";
-      gotoXY(i, HEIGHT);
-      cout << "#";
-    }
-    for (int i = 0; i <= HEIGHT; i++) {
-      gotoXY(0, i);
-      cout << "#";
-      gotoXY(WIDTH, i);
-      cout << "#";
-    }
+    // for (int i = 0; i <= WIDTH; i++) {
+    // gotoXY(i, 0);
+    // cout << "#";
+    // gotoXY(i, HEIGHT);
+    // cout << "#";
+    //}
+    // for (int i = 0; i <= HEIGHT; i++) {
+    // gotoXY(0, i);
+    // cout << "#";
+    // gotoXY(WIDTH, i);
+    // cout << "#";
+    //}
+
     for (auto &i : tris) {
       if (p.backFaceCull(i) == true) {
         // cout << "x: " << i.v0.x << "y:" << i.v0.y << "z: " << i.v0.z
