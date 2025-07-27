@@ -15,15 +15,21 @@
 #include <vector>
 #include <windows.h>
 using namespace std;
-#define WIDTH 600
-#define HEIGHT 200
+#define WIDTH 300
+#define HEIGHT 90
+
+char buf[HEIGHT][WIDTH];
+
 void gotoXY(int x, int y) {
   COORD coord;
   coord.X = x;
   coord.Y = y;
   SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
-
+void setColor(int textColor, int bgColor) {
+  HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+  SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
+}
 void hide_cursor() {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
   CONSOLE_CURSOR_INFO cursorInfo;
@@ -35,7 +41,22 @@ void hide_cursor() {
   cursorInfo.bVisible = FALSE;
   SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
+
+std::string build_frame() {
+  std::string frame;
+  frame.reserve(HEIGHT * (WIDTH + 1));
+  for (int i = 0; i < HEIGHT; i++) {
+    frame.append(buf[i], WIDTH);
+    frame.push_back('\n');
+  }
+  return frame;
+}
 int main() {
+  for (int i = 0; i < HEIGHT; i++) {
+    for (int j = 0; j < WIDTH; j++) {
+      buf[i][j] = ' ';
+    }
+  }
   hide_cursor();
   Mesh cube = Mesh::createCube(12, 12, 12);
   Model model(&cube);
@@ -59,8 +80,7 @@ int main() {
 
   vector<Vec4> clipVers;
   while (true) {
-    system("cls");
-
+    memset(buf, ' ', sizeof(buf));
     if (_kbhit()) {
       char ch = _getch();
       if (ch == 'a') {
@@ -81,7 +101,7 @@ int main() {
         model.position = model.position + Vec3(0, 0, -1);
     }
 
-    model.rotation = model.rotation + Vec3(3.14 / 40, 3.14 / 40, 3.14 / 40);
+    model.rotation = model.rotation + Vec3(3.14 / 80, 3.14 / 80, 3.14 / 80);
 
     /*for (int i = 0; i < 4; i++) {
 for (int j = 0; j < 4; j++) {
@@ -154,11 +174,32 @@ for (int j = 0; j < 4; j++) {
           Vec3 res1 = p.toScreen(WIDTH, HEIGHT, i.v1);
 
           Vec3 res2 = p.toScreen(WIDTH, HEIGHT, i.v2);
+          setColor(7, 0);
+          // cout << res0.z << endl;
+          vector<Vec3> tt = p.rasterization(res0, res1, res2);
+          for (auto j : tt) {
+            char ex;
+            // cout << j.z << endl;
+            if (j.z >= 0.8)
+              ex = '@';
+            if (j.z < 0.8 && j.z >= 0.7)
+              ex = '#';
+            if (j.z < 0.7 && j.z >= 0.6)
+              ex = '+';
+            if (j.z < 0.6 && j.z >= 0.5)
+              ex = ':';
+            if (j.z < 0.5)
+              ex = '.';
+            buf[(int)j.y][(int)j.x] = ex;
+            // gotoXY((int)j.x, (int)j.y);
+            // cout << "#";
+          }
 
+          /*setColor(2, 0);
           vector<Vec2> t = getLinePoints(res0, res1);
           for (auto j : t) {
             gotoXY((int)j.x, (int)j.y);
-            cout << "#";
+            cout << "";
           }
 
           t = getLinePoints(res1, res2);
@@ -172,7 +213,9 @@ for (int j = 0; j < 4; j++) {
             gotoXY((int)j.x, (int)j.y);
             cout << "#";
           }
+          */
         }
+
         // cout << "x :" << res0.x << "y: " << res0.y << "z:" << res0.z << endl;
         // cout << "x :" << res1.x << "y: " << res1.y << "z:" << res1.z << endl;
         // cout << "x :" << res2.x << "y: " << res2.y << "z:" << res2.z << endl;
@@ -181,8 +224,11 @@ for (int j = 0; j < 4; j++) {
     // Vec3 res = p.toScreen(100, 50, b);
     //  gotoXY((int)res.x, (int)res.y);
     // cout << "#";
-    cout << endl;
-    Sleep(50);
+    std::string frame = build_frame();
+    std::cout << "\x1b[H" << frame << std::flush;
+
+    // cout << endl;
+    Sleep(32);
   }
   return 0;
 }

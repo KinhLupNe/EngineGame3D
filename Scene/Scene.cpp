@@ -10,4 +10,5 @@ void Scene::removeModel(Model *m) {
   if (it != models.end())
     models.erase(it);
 }
+
 void Scene::clearModels() { models.clear(); }

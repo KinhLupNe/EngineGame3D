@@ -24,6 +24,7 @@ public:
 
   Vec3 operator*(const Vec3 &other) const;
   Vec3 operator+(const Vec3 &other) const;
+  Vec3 operator-(const Vec3 &other) const;
 
   void rotationVec3(float radX, float radY, float radZ);
   Vec3 normalize();

@@ -20,8 +20,9 @@ struct Pipeline {
   // triangle primitive clipping
   // nằm ngoài trả về rỗng
   static std::vector<Triangle> primitiveClipping(const Triangle &tri);
-
-  // clip ->ndc->viewport
+  // Rasterization
+  std::vector<Vec3> rasterization(const Vec3 &a, const Vec3 &b, const Vec3 &c);
+  //  clip ->ndc->viewport
   static Vec3 toScreen(const int &width, const int &height,
                        const Vec4 &clipVertex);
 };

@@ -1,5 +1,6 @@
 #include "Pipeline.h"
 #include "Culling.h"
+#include "Rasterization.h"
 #include <iostream>
 #include <vector>
 Vec4 Pipeline::vertexShader(const Vec4 &vertex, const Mat4 &modelMatrix,
@@ -42,7 +43,11 @@ bool Pipeline::backFaceCull(const Triangle &tri) {
 std::vector<Triangle> Pipeline::primitiveClipping(const Triangle &tri) {
   return clipTriangle(tri);
 }
-
+// Rasterization
+std::vector<Vec3> Pipeline::rasterization(const Vec3 &a, const Vec3 &b,
+                                          const Vec3 &c) {
+  return pointInTriagle(a, b, c);
+}
 Vec3 Pipeline::toScreen(const int &width, const int &height,
                         const Vec4 &clipVertex) {
   Mat4 a = Mat4::viewport(2, 2, width, height, 0, 1);
