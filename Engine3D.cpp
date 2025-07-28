@@ -101,14 +101,8 @@ int main() {
         model.position = model.position + Vec3(0, 0, -1);
     }
 
-    model.rotation = model.rotation + Vec3(3.14 / 80, 3.14 / 80, 3.14 / 80);
+    // model.rotation = model.rotation + Vec3(3.14 / 80, 3.14 / 80, 3.14 / 80);
 
-    /*for (int i = 0; i < 4; i++) {
-for (int j = 0; j < 4; j++) {
-     cout << model.getWorldMatrix().m[i][j] << " ";
-   }
-   cout << endl;
- }*/
     clipVers.clear();
     for (size_t i = 0; i < vbo.getSize(); i++) {
       Vec4 a = Vec4(vbo[i].positon.x, vbo[i].positon.y, vbo[i].positon.z, 1);
@@ -118,46 +112,8 @@ for (int j = 0; j < 4; j++) {
                               scene.camera->getProjectionMatrix());
 
       clipVers.push_back(b);
-
-      /*cout << "X:" << vbo[ibo[i]].positon.x << " Y:" << vbo[ibo[i]].positon.y
-           << " Z:" << vbo[ibo[i]].positon.z << endl;
-      cout << "X':" << a.x << " Y':" << a.y << " Z':" << a.z << endl;*/
     }
-    /*
-      int k = 0;
-      for (auto i : clipVers) {
-        cout << k++ << ": " << i.x << ", " << i.y << ", " << i.z << ", " << i.w
-             << endl;
-      }
-    */
     vector<Triangle> tris = p.assemble(clipVers, ibo.data);
-    /*for (int i = 0; i < tris.size(); i++) {
-      cout << i << endl;
-      cout << "x:" << tris[i].v0.x << "y:" << tris[i].v0.x << "z:" <<
-    tris[i].v0.z
-           << "w: " << tris[i].v0.w << endl;
-      // cout << ibo.data[i] << ", ";
-      cout << "x:" << tris[i].v1.x << "y:" << tris[i].v1.x << "z:" <<
-    tris[i].v1.z
-           << "w: " << tris[i].v1.w << endl;
-      cout << "x:" << tris[i].v2.x << "y:" << tris[i].v2.x << "z:" <<
-    tris[i].v2.z
-           << "w: " << tris[i].v2.w << endl;
-      //
-    }*/
-
-    // for (int i = 0; i <= WIDTH; i++) {
-    // gotoXY(i, 0);
-    // cout << "#";
-    // gotoXY(i, HEIGHT);
-    // cout << "#";
-    //}
-    // for (int i = 0; i <= HEIGHT; i++) {
-    // gotoXY(0, i);
-    // cout << "#";
-    // gotoXY(WIDTH, i);
-    // cout << "#";
-    //}
 
     for (auto &i : tris) {
       if (p.backFaceCull(i) == true) {
@@ -165,8 +121,8 @@ for (int j = 0; j < 4; j++) {
         // << "w:" << i.v0.w << endl;
 
         vector<Triangle> temp = p.primitiveClipping(i);
-        gotoXY(120, 20);
-        // cout << "So tam giac sau khi cat :" << temp.size();
+        // gotoXY(120, 20);
+        //  cout << "So tam giac sau khi cat :" << temp.size();
         for (auto &i : temp) {
 
           Vec3 res0 = p.toScreen(WIDTH, HEIGHT, i.v0);
@@ -174,51 +130,33 @@ for (int j = 0; j < 4; j++) {
           Vec3 res1 = p.toScreen(WIDTH, HEIGHT, i.v1);
 
           Vec3 res2 = p.toScreen(WIDTH, HEIGHT, i.v2);
-          setColor(7, 0);
-          // cout << res0.z << endl;
-          vector<Vec3> tt = p.rasterization(res0, res1, res2);
+          // setColor(7, 0);
+          /*gotoXY(res0.x, res0.y);
+          cout << i.v0.z;
+          gotoXY(res1.x, res1.y);
+          cout << i.v1.z;
+          gotoXY(res2.x, res2.y);
+          cout << i.v2.z;
+          cout << res0.z << endl;*/
+          vector<Vec3> tt = p.rasterization(res0, res1, res2, i);
           for (auto j : tt) {
             char ex;
             // cout << j.z << endl;
             if (j.z >= 0.8)
-              ex = '@';
-            if (j.z < 0.8 && j.z >= 0.7)
-              ex = '#';
-            if (j.z < 0.7 && j.z >= 0.6)
-              ex = '+';
-            if (j.z < 0.6 && j.z >= 0.5)
-              ex = ':';
-            if (j.z < 0.5)
               ex = '.';
+            if (j.z < 0.8 && j.z >= 0.6)
+              ex = ':';
+            if (j.z < 0.6 && j.z >= 0.4)
+              ex = '+';
+            if (j.z < 0.4 && j.z >= 0.2)
+              ex = '#';
+            if (j.z < 0.2)
+              ex = '@';
             buf[(int)j.y][(int)j.x] = ex;
             // gotoXY((int)j.x, (int)j.y);
             // cout << "#";
           }
-
-          /*setColor(2, 0);
-          vector<Vec2> t = getLinePoints(res0, res1);
-          for (auto j : t) {
-            gotoXY((int)j.x, (int)j.y);
-            cout << "";
-          }
-
-          t = getLinePoints(res1, res2);
-          for (auto j : t) {
-            gotoXY((int)j.x, (int)j.y);
-            cout << "#";
-          }
-
-          t = getLinePoints(res2, res0);
-          for (auto j : t) {
-            gotoXY((int)j.x, (int)j.y);
-            cout << "#";
-          }
-          */
         }
-
-        // cout << "x :" << res0.x << "y: " << res0.y << "z:" << res0.z << endl;
-        // cout << "x :" << res1.x << "y: " << res1.y << "z:" << res1.z << endl;
-        // cout << "x :" << res2.x << "y: " << res2.y << "z:" << res2.z << endl;
       }
     }
     // Vec3 res = p.toScreen(100, 50, b);
@@ -228,7 +166,9 @@ for (int j = 0; j < 4; j++) {
     std::cout << "\x1b[H" << frame << std::flush;
 
     // cout << endl;
-    Sleep(32);
+    // system("pause");
+    Sleep(100);
+    system("cls");
   }
   return 0;
 }

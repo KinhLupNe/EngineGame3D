@@ -21,7 +21,8 @@ struct Pipeline {
   // nằm ngoài trả về rỗng
   static std::vector<Triangle> primitiveClipping(const Triangle &tri);
   // Rasterization
-  std::vector<Vec3> rasterization(const Vec3 &a, const Vec3 &b, const Vec3 &c);
+  std::vector<Vec3> rasterization(const Vec3 &a, const Vec3 &b, const Vec3 &c,
+                                  const Triangle &t);
   //  clip ->ndc->viewport
   static Vec3 toScreen(const int &width, const int &height,
                        const Vec4 &clipVertex);

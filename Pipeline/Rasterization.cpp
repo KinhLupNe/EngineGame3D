@@ -1,5 +1,6 @@
 #include "Rasterization.h"
 #include <cmath>
+#include <iostream>
 #include <vector>
 float crossProduct(const Vec3 &a, const Vec3 &b) {
   return a.x * b.y - a.y * b.x;
@@ -10,7 +11,8 @@ bool isOnTriangle(const float &a, const float &b, const float &c) {
   return false;
 }
 // tap cac diem trong tam giac trong khong gian man hinh
-std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c) {
+std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c,
+                                 const Triangle &t) {
   std::vector<Vec3> res;
   Vec3 ab = b - a;
   Vec3 bc = c - b;
@@ -39,7 +41,7 @@ std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c) {
         w1 /= area;
         w2 /= area;
         // tinh z dung phoi canh
-        p.z = zBuffer(a, b, c, w0, w1, w2);
+        p.z = zBuffer(a, b, c, w0, w1, w2, t);
         res.push_back(p);
       }
     }
@@ -49,8 +51,11 @@ std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c) {
 }
 // noi suy dung phoi canh z-buffer
 float zBuffer(const Vec3 &a, const Vec3 &b, const Vec3 &c, const float &w0,
-              const float &w1, const float &w2) {
+              const float &w1, const float &w2, const Triangle &t) {
   float res;
-  res = 1 / ((w0 / a.z) + (w1 / b.z) + (w2 / c.z));
+  // std::cout << "w1: " << w1 << ", w2: " << w2 << ", w0: " << w0 << std::endl;
+  res = ((w0 / t.v0.w) + (w1 / t.v1.w) + (w2 / t.v2.w)) /
+        ((w0 / t.v0.z) + (w1 / t.v1.z) + (w2 / t.v2.z));
+  // std::cout << "z: " << res << std::endl;
   return res;
 }

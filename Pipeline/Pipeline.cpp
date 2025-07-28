@@ -45,8 +45,8 @@ std::vector<Triangle> Pipeline::primitiveClipping(const Triangle &tri) {
 }
 // Rasterization
 std::vector<Vec3> Pipeline::rasterization(const Vec3 &a, const Vec3 &b,
-                                          const Vec3 &c) {
-  return pointInTriagle(a, b, c);
+                                          const Vec3 &c, const Triangle &t) {
+  return pointInTriagle(a, b, c, t);
 }
 Vec3 Pipeline::toScreen(const int &width, const int &height,
                         const Vec4 &clipVertex) {
