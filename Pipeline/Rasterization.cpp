@@ -31,9 +31,9 @@ std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c,
       Vec3 bp = p - b;
       Vec3 cp = p - c;
       // toa do trong tam
-      float w0 = crossProduct(ab, ap);
-      float w1 = crossProduct(bc, bp);
-      float w2 = crossProduct(ca, cp);
+      float w2 = crossProduct(ab, ap);
+      float w0 = crossProduct(bc, bp);
+      float w1 = crossProduct(ca, cp);
       float area = crossProduct(ab, c - a);
       // kiem tra diem co nam trong tam giac khong
       if (isOnTriangle(w0, w1, w2)) {
@@ -52,10 +52,14 @@ std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c,
 // noi suy dung phoi canh z-buffer
 float zBuffer(const Vec3 &a, const Vec3 &b, const Vec3 &c, const float &w0,
               const float &w1, const float &w2, const Triangle &t) {
+
   float res;
   // std::cout << "w1: " << w1 << ", w2: " << w2 << ", w0: " << w0 << std::endl;
-  res = ((w0 / t.v0.w) + (w1 / t.v1.w) + (w2 / t.v2.w)) /
-        ((w0 / t.v0.z) + (w1 / t.v1.z) + (w2 / t.v2.z));
-  // std::cout << "z: " << res << std::endl;
+  res = 1.0f / ((w0 / a.z) + (w1 / b.z) + (w2 / c.z));
+  // std::cout << "z: " << resZ << std::endl;
+  //  resW = w0 / t.v0.w + w1 / t.v1.w + w2 / t.v2.w;
+  //  std::cout << "w: " << resW << std::endl;
+  //  res = resZ / resW;
+  //  std::cout << "res: " << res << std::endl;
   return res;
 }

@@ -1,17 +1,16 @@
 # ninja log v6
-12	155	7739074344179294	CMakeFiles/Engine3D.dir/Geometry/Vertex.cpp.obj	4084812e40bb2ba1
-24	871	7753342161639087	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
 26	1017	7753342161659065	CMakeFiles/Engine3D.dir/Core/Buffer.cpp.obj	5641eec38b14d952
+24	871	7753342161639087	CMakeFiles/Engine3D.dir/Geometry/Model.cpp.obj	6a77046912300cd2
+12	155	7739074344179294	CMakeFiles/Engine3D.dir/Geometry/Vertex.cpp.obj	4084812e40bb2ba1
 28	781	7753342161679083	CMakeFiles/Engine3D.dir/Core/Camera.cpp.obj	8464e1de8fbda467
-30	926	7753342161704238	CMakeFiles/Engine3D.dir/Render/Render.cpp.obj	73bd05e007e4e4bc
 32	805	7753342161724305	CMakeFiles/Engine3D.dir/Math/Math.cpp.obj	780be7fc37ce033b
+30	926	7753342161704238	CMakeFiles/Engine3D.dir/Render/Render.cpp.obj	73bd05e007e4e4bc
 21	1002	7753342161609078	CMakeFiles/Engine3D.dir/Geometry/Mesh.cpp.obj	58f803c1fea566b6
-20	628	7753994643730760	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
-347	496	7754260772261310	Engine3D.exe	5a4cc9c0020e4fed
-15	368	7753939298241327	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
+19	656	7755031048457895	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+657	816	7755031054826787	Engine3D.exe	5a4cc9c0020e4fed
+22	594	7754883139353750	CMakeFiles/Engine3D.dir/Pipeline/Pipeline.cpp.obj	1b1e10af40e90b9f
 41	996	7753342161809449	CMakeFiles/Engine3D.dir/Scene/Scene.cpp.obj	88acc1d9b0d9b0c6
 37	1137	7753342161774308	CMakeFiles/Engine3D.dir/Pipeline/Culling.cpp.obj	309a8b36e3b3d55
-12	347	7754260768921306	CMakeFiles/Engine3D.dir/Pipeline/Rasterization.cpp.obj	70f05e16ec1e477f
-16	365	7754261925602740	CMakeFiles/Engine3D.dir/Pipeline/Rasterization.cpp.obj	70f05e16ec1e477f
-12	618	7754261925562678	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
-618	765	7754261931617033	Engine3D.exe	5a4cc9c0020e4fed
+20	440	7754885407383732	CMakeFiles/Engine3D.dir/Pipeline/Rasterization.cpp.obj	70f05e16ec1e477f
+12	645	7755036833512703	CMakeFiles/Engine3D.dir/Engine3D.cpp.obj	5420d78e7b96701e
+645	809	7755036839846581	Engine3D.exe	5a4cc9c0020e4fed

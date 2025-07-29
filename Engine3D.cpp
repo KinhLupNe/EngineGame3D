@@ -15,8 +15,8 @@
 #include <vector>
 #include <windows.h>
 using namespace std;
-#define WIDTH 300
-#define HEIGHT 90
+#define WIDTH 200
+#define HEIGHT 80
 
 char buf[HEIGHT][WIDTH];
 
@@ -101,7 +101,7 @@ int main() {
         model.position = model.position + Vec3(0, 0, -1);
     }
 
-    // model.rotation = model.rotation + Vec3(3.14 / 80, 3.14 / 80, 3.14 / 80);
+    model.rotation = model.rotation + Vec3(3.14 / 100, 3.14 / 100, 3.14 / 100);
 
     clipVers.clear();
     for (size_t i = 0; i < vbo.getSize(); i++) {
@@ -131,27 +131,39 @@ int main() {
 
           Vec3 res2 = p.toScreen(WIDTH, HEIGHT, i.v2);
           // setColor(7, 0);
-          /*gotoXY(res0.x, res0.y);
-          cout << i.v0.z;
-          gotoXY(res1.x, res1.y);
-          cout << i.v1.z;
-          gotoXY(res2.x, res2.y);
-          cout << i.v2.z;
-          cout << res0.z << endl;*/
+          // gotoXY(res0.x, res0.y);
+          // cout << i.v0.z << " " << res0.z;
+          // gotoXY(res1.x, res1.y);
+          // cout << i.v1.z << " " << res1.z;
+          // gotoXY(res2.x, res2.y);
+          // cout << i.v2.z << " " << res2.z;
+          // cout << res0.z << endl;
           vector<Vec3> tt = p.rasterization(res0, res1, res2, i);
           for (auto j : tt) {
-            char ex;
-            // cout << j.z << endl;
-            if (j.z >= 0.8)
+
+            char ex = '@'; // mặc định tối nhất
+
+            if (j.z >= 0.93f)
+              ex = ' ';
+            else if (j.z >= 0.86f)
               ex = '.';
-            if (j.z < 0.8 && j.z >= 0.6)
+            else if (j.z >= 0.79f)
               ex = ':';
-            if (j.z < 0.6 && j.z >= 0.4)
-              ex = '+';
-            if (j.z < 0.4 && j.z >= 0.2)
+            else if (j.z >= 0.72f)
+              ex = ';';
+            else if (j.z >= 0.65f)
+              ex = '?';
+            else if (j.z >= 0.58f)
+              ex = '[';
+            else if (j.z >= 0.51f)
+              ex = 'f';
+            else if (j.z >= 0.44f)
+              ex = 'm';
+            else if (j.z >= 0.37f)
               ex = '#';
-            if (j.z < 0.2)
+            else if (j.z >= 0.30f)
               ex = '@';
+
             buf[(int)j.y][(int)j.x] = ex;
             // gotoXY((int)j.x, (int)j.y);
             // cout << "#";
@@ -167,8 +179,8 @@ int main() {
 
     // cout << endl;
     // system("pause");
-    Sleep(100);
-    system("cls");
+    Sleep(32);
+    // system("cls");
   }
   return 0;
 }
