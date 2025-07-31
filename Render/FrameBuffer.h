@@ -1,5 +1,7 @@
 #ifndef FRAMEBUFFER_H
 #define FRAMEBUFFER_H
+#include <iostream>
+#include <string>
 #include <vector>
 using namespace std;
 class FrameBuffer {
@@ -16,6 +18,8 @@ public:
   void clear();
   // set data z-buffer, t-buffer
   void set(int x, int y, float z, char t);
+  // convert z-buffer to t-buffer
+  static char tBufferFromZBuffer(float z);
   // display buffer
   void display();
   // get

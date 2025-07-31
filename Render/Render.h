@@ -5,6 +5,7 @@
 #include "../Math/Math.h"
 #include "../Pipeline/Pipeline.h"
 #include "../Scene/Scene.h"
+#include "FrameBuffer.h"
 #include <vector>
 using namespace std;
 // inout :scene
@@ -15,24 +16,20 @@ public:
   vector<IndexBuffer> ibos;
   vector<VertexBuffer> vbos;
   Scene scene;
+  int width;
+  int height;
+  FrameBuffer frameBuffer;
 
   Render();
   ~Render();
 
   // display bufffer//
-  //  clip vertexs
-  vector<Vec4> clipVertex(const VertexBuffer &vbo, Model *model) {
-    vector<Vec4> res;
-    for (int i = 0; i < vbo.getSize(); i++) {
-      Vec4 a = Vec4(vbo[i].positon.x, vbo[i].positon.y, vbo[i].positon.z, 1);
-      Vec4 b = p.vertexShader(a, model->getWorldMatrix(),
-                              scene.camera->getViewMatrix(),
-                              scene.camera->getProjectionMatrix());
-      res.push_back(b);
-      return res;
-    }
-  }
-  //
+  //  get Triangle in clip space (model ->view->project ->triangle)
+  vector<Triangle> getTriangleClip(const VertexBuffer &vbo,
+                                   const IndexBuffer &ibo, Model *model);
+  // rassterization(tri(after backFaceCull, primitiveClipping) )
+  vector<Vec3> VPbuffer(const Triangle &tri);
+
   void present();
 };
 #endif
