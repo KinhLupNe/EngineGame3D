@@ -49,6 +49,7 @@ void Render::present() {
       }
     }
   }
+  frameBuffer.display();
 }
 
 ;

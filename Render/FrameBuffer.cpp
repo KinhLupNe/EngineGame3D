@@ -16,9 +16,7 @@ void FrameBuffer::clear() {
   }
 }
 char FrameBuffer::tBufferFromZBuffer(float z) {
-  char tList[] = " `.-':_,^=;><+!rc*/"
-                 "z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]"
-                 "2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@";
+  char tList[] = "@$#Mmn*;:,.";
 
   int l = sizeof(tList) / sizeof(char);
   float step = 1.0f / (float)(l);
@@ -38,6 +36,7 @@ void FrameBuffer::display() {
     }
     frame.push_back('\n');
   }
+  frame.pop_back();
   std::cout << "\x1b[H" << frame << std::flush;
 }
 vector<vector<float>> FrameBuffer::getZBuffer() { return zBuffer; }

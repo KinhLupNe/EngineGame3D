@@ -12,7 +12,7 @@ using namespace std;
 class Render {
 public:
   Pipeline p;
-  vector<Buffer> bufffer;
+  vector<Buffer> buffers;
   vector<IndexBuffer> ibos;
   vector<VertexBuffer> vbos;
   Scene scene;
@@ -20,10 +20,20 @@ public:
   int height;
   FrameBuffer frameBuffer;
 
-  Render();
-  ~Render();
+  Render(const int &width, const int &height)
+      : width(width), height(height), frameBuffer(width, height) {}
+  ~Render() = default;
 
   // display bufffer//
+  // load buffer from model (vbo,ibo)
+  void loadFromModel(const Model &model) {
+    Buffer buffer;
+    buffer.loadFromMesh(*model.mesh);
+    ibos.push_back(buffer.getIBO());
+    vbos.push_back(buffer.getVBO());
+    buffers.push_back(buffer);
+  }
+
   //  get Triangle in clip space (model ->view->project ->triangle)
   vector<Triangle> getTriangleClip(const VertexBuffer &vbo,
                                    const IndexBuffer &ibo, Model *model);
