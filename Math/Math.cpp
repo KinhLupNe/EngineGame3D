@@ -39,7 +39,17 @@ Vec3 Vec3::operator-(const Vec3 &other) const {
   res.z = z - other.z;
   return res;
 }
+Vec3 Vec3::operator*(const float &t) const {
+  Vec3 res;
+  res.x = x * t;
+  res.y = y * t;
+  res.z = z * t;
+  return res;
+}
 
+float Vec3::multi(const Vec3 &a, const Vec3 &b) {
+  return a.x * b.x + a.y * b.y + a.z * b.z;
+}
 Vec3 Vec3::normalize() {
   float l = sqrt(x * x + y * y + z * z);
   Vec3 res = Vec3(x / l, y / l, z / l);

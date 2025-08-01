@@ -25,7 +25,9 @@ public:
   Vec3 operator*(const Vec3 &other) const;
   Vec3 operator+(const Vec3 &other) const;
   Vec3 operator-(const Vec3 &other) const;
+  Vec3 operator*(const float &t) const;
 
+  static float multi(const Vec3 &a, const Vec3 &b);
   void rotationVec3(float radX, float radY, float radZ);
   Vec3 normalize();
   static float crossPro(const Vec3 &a, const Vec3 &b, const Vec3 &c);
