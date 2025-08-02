@@ -124,7 +124,7 @@ int main() {
         (Vec3(3.14 / 200, 3.14 / 200, 3.14 / 200));
     setColor(5, 0);
     render.present();
-    Sleep(32);
+    Sleep(16);
   }
   return 0;
 }

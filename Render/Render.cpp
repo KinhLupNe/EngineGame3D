@@ -1,4 +1,5 @@
 ﻿#include "Render.h"
+#include "../Pipeline/FragmentShader.h"
 //  get Triangle in clip space (model ->view->project ->triangle)
 vector<TriangleOutput> Render::getTriangleClip(const VertexBuffer &vbo,
                                                const IndexBuffer &ibo,
@@ -36,6 +37,10 @@ vector<VertexOutput> Render::VPbuffer(const TriangleOutput &triOut) {
   v1.posScreen = Vec3(res1.x, res1.y, res1.z);
   v2.posScreen = Vec3(res2.x, res2.y, res2.z);
 
+  // cout << v0.normal.x << " " << v0.normal.y << " " << v0.normal.z << endl;
+  // cout << v1.normal.x << " " << v1.normal.y << " " << v1.normal.z << endl;
+  // cout << v2.normal.x << " " << v2.normal.y << " " << v2.normal.z << endl;
+
   return p.rasterization(v0, v1, v2, tri);
 }
 
@@ -46,21 +51,41 @@ void Render::present() {
     // vertex in clip space(after projection), assemble vertex to triangle
     vector<TriangleOutput> tris =
         getTriangleClip(vbos[i], ibos[i], scene.models[i]);
+    // cout << vbos[i][5].normalize.x << " " << vbos[i][5].normalize.y << " "
+    //    << vbos[i][5].normalize.z << endl;
     //
     for (auto &tri : tris) {
       // check back face
+      // cout << tri.v0.normal.x << " " << tri.v0.normal.y << " "
+      //   << tri.v0.normal.z << endl;
       if (p.backFaceCull(tri) == true) {
         // primitive clipping Triangles
         vector<TriangleOutput> temps = p.primitiveClipping(tri);
         for (auto &temp : temps) {
+          // cout << temp.v0.normal.x << " " << temp.v0.normal.y << " "
+          //    << temp.v0.normal.z << endl;
+          // cout << temp.v1.normal.x << " " << temp.v1.normal.y << " "
+          //    << temp.v1.normal.z << endl;
+          // cout << temp.v2.normal.x << " " << temp.v2.normal.y << " "
+          //     << temp.v2.normal.z << endl;
+
           // rasterization
           vector<VertexOutput> vps = VPbuffer(temp);
           // fragment shader
           //
           for (auto &v : vps) {
-            if (frameBuffer.getZBuffer()[v.y][v.x] > v.z) {
-              frameBuffer.set(v.x, v.y, v.z,
-                              FrameBuffer::tBufferFromZBuffer(v.z));
+            if (frameBuffer.getZBuffer()[v.posScreen.y][v.posScreen.x] >
+                v.posScreen.z) {
+              FragmentPayLoad fragmentPayLoad(v.normal, v.posScreen.z,
+                                              v.posView, v.color);
+              // cout << v.normal.x << " " << v.normal.y << " " << v.normal.z
+              // << endl;
+              FragmentShader fragmentShader;
+              fragmentShader.fragmentPayLoad = fragmentPayLoad;
+              char shade = fragmentShader.shade();
+
+              frameBuffer.set(v.posScreen.x, v.posScreen.y, v.posScreen.z,
+                              shade);
             }
           }
         }

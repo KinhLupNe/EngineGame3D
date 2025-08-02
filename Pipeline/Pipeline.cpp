@@ -11,13 +11,18 @@ VertexOutput Pipeline::vertexShader(const Vertex &vertex,
   res.normal = vertex.normalize;
   res.color = vertex.color;
   res.posView = Vec3(vertex.positon.x, vertex.positon.y, vertex.positon.z);
+  // std::cout << "vertex: " << vertex.positon.x << ", " << vertex.positon.y
+  //<< ", " << vertex.positon.z << std::endl;
   // Chuyển đổi vị trí của đỉnh từ không gian mô hình sang không gian clip
   Vec4 transformedVertex =
       modelMatrix *
       Vec4(vertex.positon.x, vertex.positon.y, vertex.positon.z, 1.0f);
   transformedVertex = viewMatrix * transformedVertex;
+  res.posView =
+      Vec3(transformedVertex.x, transformedVertex.y, transformedVertex.z);
   transformedVertex = projectionMatrix * transformedVertex;
   res.posClip = transformedVertex;
+
   return res;
 }
 std::vector<TriangleOutput>

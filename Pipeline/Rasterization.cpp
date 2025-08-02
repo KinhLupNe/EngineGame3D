@@ -18,6 +18,15 @@ std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
   Vec3 a = aOut.posScreen;
   Vec3 b = bOut.posScreen;
   Vec3 c = cOut.posScreen;
+  // std::cout << "a: " << a.x << ", " << a.y << ", " << a.z << std::endl;
+  // std::cout << "b: " << b.x << ", " << b.y << ", " << b.z << std::endl;
+  // std::cout << "c: " << c.x << ", " << c.y << ", " << c.z << std::endl;
+  // std::cout << "a: " << aOut.posView.x << ", " << aOut.posView.y << ", "
+  //        << aOut.posView.z << std::endl;
+  // std::cout << "b: " << bOut.posView.x << ", " << bOut.posView.y << ", "
+  //         << bOut.posView.z << std::endl;
+  // std::cout << "c: " << cOut.posView.x << ", " << cOut.posView.y << ", "
+  //         << cOut.posView.z << std::endl;
 
   std::vector<VertexOutput> res;
   Vec3 ab = b - a;
@@ -84,7 +93,8 @@ VertexOutput interpolateVertexOutput(const VertexOutput &a,
   VertexOutput res;
   res.posView = a.posView * w0 + b.posView * w1 + c.posView * w2;
   res.posClip = a.posClip * w0 + b.posClip * w1 + c.posClip * w2;
-  res.normal = a.normal * w0 + b.normal * w1 + c.normal * w2;
+  res.normal = ((b.posView - a.posView) * (c.posView - b.posView)).normalize();
+
   res.color = a.color * w0 + b.color * w1 + c.color * w2;
   return res;
 }
