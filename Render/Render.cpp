@@ -92,6 +92,15 @@ void Render::present() {
       }
     }
   }
+  frameBuffer.put(1, 1, "CAMERA");
+  frameBuffer.put(1, 2, "X CAMERA: ", scene.camera->pos.x);
+  frameBuffer.put(1, 3, "Y CAMERA: ", scene.camera->pos.y);
+  frameBuffer.put(1, 4, "Z CAMERA: ", scene.camera->pos.z);
+  frameBuffer.put(1, 5, "CAMERA ANGLE");
+  frameBuffer.put(1, 6, "X ANGLE: ", scene.camera->camAngle.x);
+  frameBuffer.put(1, 7, "Y ANGLE: ", scene.camera->camAngle.y);
+  frameBuffer.put(1, 8, "Z ANGLE: ", scene.camera->camAngle.z);
+
   frameBuffer.display();
 }
 

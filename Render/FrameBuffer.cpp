@@ -27,6 +27,17 @@ void FrameBuffer::set(int x, int y, float z, char t) {
   zBuffer[y][x] = z;
   tBuffer[y][x] = t;
 }
+void FrameBuffer::putText(int x, int y, const std::string &text) {
+  if (y < 0 || y >= height)
+    return;
+  for (size_t i = 0; i < text.size(); ++i) {
+    int xx = x + static_cast<int>(i);
+    if (xx < 0 || xx >= width)
+      break;
+    tBuffer[y][xx] = text[i];
+  }
+}
+
 void FrameBuffer::display() {
   std::string frame;
   frame.reserve(height * (width + 1));

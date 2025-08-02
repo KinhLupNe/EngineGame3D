@@ -6,7 +6,7 @@ public:
   Vec3 pos;
   Vec3 target;
   Vec3 up;
-
+  Vec3 camAngle; // góc nhìn của camera
   float zNear;
   float zFar;
   float r, l, t, b;

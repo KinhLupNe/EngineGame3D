@@ -16,8 +16,8 @@
 #include <vector>
 #include <windows.h>
 using namespace std;
-#define WIDTH 200
-#define HEIGHT 80
+#define WIDTH 300
+#define HEIGHT 70
 
 char buf[HEIGHT][WIDTH];
 float zbuf[HEIGHT][WIDTH];
@@ -71,12 +71,12 @@ int main() {
   render.loadFromModel(model);
   render.loadFromModel(model1);
 
-  Camera cam = Camera(Vec3(0, 0, -5), Vec3(0, 0, 0), Vec3(0, 1, 0), 15, 45, -12,
-                      12, 12, -12);
+  Camera cam = Camera(Vec3(0, 0, -5), Vec3(0, 0, 0), Vec3(0, 1, 0), 15, 100,
+                      -12, 12, 12, -12);
 
   model.position = Vec3(10, 0, 26);
   model.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
-  model1.position = Vec3(15, 0, 20);
+  model1.position = Vec3(20, 0, 20);
   model1.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
 
   Scene scene;
@@ -93,38 +93,62 @@ int main() {
     if (_kbhit()) {
       char ch = _getch();
       if (ch == 'a') {
-        render.scene.models[0]->position =
-            render.scene.models[0]->position + Vec3(1, 0, 0);
+        render.scene.camera->camAngle =
+            render.scene.camera->camAngle + Vec3(0, -3.14 / 100, 0);
       }
       if (ch == 's')
-        render.scene.models[0]->position =
-            render.scene.models[0]->position + Vec3(0, 1, 0);
+        render.scene.camera->camAngle =
+            render.scene.camera->camAngle + Vec3(3.14 / 100, 0, 0);
       if (ch == 'd')
-        render.scene.models[0]->position =
-            render.scene.models[0]->position + Vec3(-1, 0, 0);
+        render.scene.camera->camAngle =
+            render.scene.camera->camAngle + Vec3(0, 3.14 / 100, 0);
 
       if (ch == 'w')
-        render.scene.models[0]->position =
-            render.scene.models[0]->position + Vec3(0, -1, 0);
+        render.scene.camera->camAngle =
+            render.scene.camera->camAngle + Vec3(-3.14 / 100, 0, 0);
 
-      if (ch == 'z')
-        render.scene.models[0]->position =
-            render.scene.models[0]->position + Vec3(0, 0, 1);
-
-      if (ch == 'c')
-        render.scene.models[0]->position =
-            render.scene.models[0]->position + Vec3(0, 0, -1);
+      if (ch == 'j') {
+        render.scene.camera->pos = render.scene.camera->pos + Vec3(-1, 0, 0);
+        render.scene.camera->target =
+            render.scene.camera->target +
+            Vec3(-1, 0, 0); // camera nhìn về phía trước
+      }
+      if (ch == 'l') {
+        render.scene.camera->pos = render.scene.camera->pos + Vec3(1, 0, 0);
+        render.scene.camera->target =
+            render.scene.camera->target +
+            Vec3(1, 0, 0); // camera nhìn về phía trước
+      }
+      if (ch == 'i') {
+        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, 1, 0);
+        render.scene.camera->target =
+            render.scene.camera->target +
+            Vec3(0, 1, 0); // camera nhìn về phía trước
+      }
+      if (ch == 'k') {
+        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, -1, 0);
+        render.scene.camera->target =
+            render.scene.camera->target +
+            Vec3(0, -1, 0); // camera nhìn về phía trước
+      }
+      if (ch == 'u')
+        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, 0, -1);
+      if (ch == 'o')
+        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, 0, 1);
     }
-
-    render.scene.models[0]->rotation =
-        render.scene.models[0]->rotation +
-        (Vec3(3.14 / 100, 3.14 / 100, 3.14 / 100));
-    render.scene.models[1]->rotation =
-        render.scene.models[0]->rotation +
-        (Vec3(3.14 / 200, 3.14 / 200, 3.14 / 200));
+    /*
+        render.scene.models[0]->rotation =
+            render.scene.models[0]->rotation +
+            (Vec3(3.14 / 100, 3.14 / 100, 3.14 / 100));
+        render.scene.models[1]->rotation =
+            render.scene.models[0]->rotation +
+            (Vec3(3.14 / 200, 3.14 / 200, 3.14 / 200));
+            */
     setColor(5, 0);
+
     render.present();
     Sleep(16);
   }
+
   return 0;
 }
