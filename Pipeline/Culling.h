@@ -1,5 +1,6 @@
 #ifndef CULLING_H
 #define CULLING_H
+#include "../Geometry/Vertex.h"
 #include "../Math/Math.h"
 #include <vector>
 
@@ -22,5 +23,5 @@ bool isInFrustum(const Vec4 &a, int plane);
 std::vector<Vec4> clipPolyWithPlane(const std::vector<Vec4> &inPoly, int plane);
 
 //  new triangles after clipping old triangle
-std::vector<Triangle> clipTriangle(const Triangle &tri);
+std::vector<TriangleOutput> clipTriangle(const TriangleOutput &triOut);
 #endif

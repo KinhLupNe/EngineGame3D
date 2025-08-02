@@ -8,6 +8,7 @@
 #include "FrameBuffer.h"
 #include <vector>
 using namespace std;
+
 // inout :scene
 class Render {
 public:
@@ -35,10 +36,11 @@ public:
   }
 
   //  get Triangle in clip space (model ->view->project ->triangle)
-  vector<Triangle> getTriangleClip(const VertexBuffer &vbo,
-                                   const IndexBuffer &ibo, Model *model);
+  vector<TriangleOutput> getTriangleClip(const VertexBuffer &vbo,
+                                         const IndexBuffer &ibo, Model *model);
   // rassterization(tri(after backFaceCull, primitiveClipping) )
-  vector<Vec3> VPbuffer(const Triangle &tri);
+  vector<VertexOutput> VPbuffer(const TriangleOutput &triOut);
+  // fragment shader
 
   void present();
 };

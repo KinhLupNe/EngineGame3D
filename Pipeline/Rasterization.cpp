@@ -11,9 +11,15 @@ bool isOnTriangle(const float &a, const float &b, const float &c) {
   return false;
 }
 // tap cac diem trong tam giac trong khong gian man hinh
-std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c,
-                                 const Triangle &t) {
-  std::vector<Vec3> res;
+std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
+                                         const VertexOutput &bOut,
+                                         const VertexOutput &cOut,
+                                         const Triangle &t) {
+  Vec3 a = aOut.posScreen;
+  Vec3 b = bOut.posScreen;
+  Vec3 c = cOut.posScreen;
+
+  std::vector<VertexOutput> res;
   Vec3 ab = b - a;
   Vec3 bc = c - b;
   Vec3 ca = a - c;
@@ -42,7 +48,14 @@ std::vector<Vec3> pointInTriagle(const Vec3 &a, const Vec3 &b, const Vec3 &c,
         w2 /= area;
         // tinh z dung phoi canh
         p.z = zBuffer(a, b, c, w0, w1, w2, t);
-        res.push_back(p);
+        // nội suy posView,posClip, nội suy normal, nội suy color
+        // gán giá trị cho VertexOutput
+        VertexOutput pOut =
+            interpolateVertexOutput(aOut, bOut, cOut, w0, w1, w2);
+        pOut.posScreen = p;
+
+        // thêm vào kết quả
+        res.push_back(pOut);
       }
     }
   }
@@ -61,5 +74,17 @@ float zBuffer(const Vec3 &a, const Vec3 &b, const Vec3 &c, const float &w0,
   //  std::cout << "w: " << resW << std::endl;
   //  res = resZ / resW;
   //  std::cout << "res: " << res << std::endl;
+  return res;
+}
+// nội suy posView, posClip, normal, color
+VertexOutput interpolateVertexOutput(const VertexOutput &a,
+                                     const VertexOutput &b,
+                                     const VertexOutput &c, const float &w0,
+                                     const float &w1, const float &w2) {
+  VertexOutput res;
+  res.posView = a.posView * w0 + b.posView * w1 + c.posView * w2;
+  res.posClip = a.posClip * w0 + b.posClip * w1 + c.posClip * w2;
+  res.normal = a.normal * w0 + b.normal * w1 + c.normal * w2;
+  res.color = a.color * w0 + b.color * w1 + c.color * w2;
   return res;
 }

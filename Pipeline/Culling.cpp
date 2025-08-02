@@ -158,8 +158,16 @@ std::vector<Vec4> clipPolyWithPlane(const std::vector<Vec4> &inPoly,
   return outPoly;
 }
 
-std::vector<Triangle> clipTriangle(const Triangle &tri) {
+std::vector<TriangleOutput> clipTriangle(const TriangleOutput &triOut) {
+  Triangle tri = Triangle{Vec4(triOut.v0.posClip.x, triOut.v0.posClip.y,
+                               triOut.v0.posClip.z, triOut.v0.posClip.w),
+                          Vec4(triOut.v1.posClip.x, triOut.v1.posClip.y,
+                               triOut.v1.posClip.z, triOut.v1.posClip.w),
+                          Vec4(triOut.v2.posClip.x, triOut.v2.posClip.y,
+                               triOut.v2.posClip.z, triOut.v2.posClip.w)};
   std::vector<Vec4> poly = {tri.v0, tri.v1, tri.v2};
+  std::vector<TriangleOutput> res;
+  TriangleOutput temp = triOut;
   // clip poly with 6 planes
   for (int i = 1; i <= 6; i++) {
     poly = clipPolyWithPlane(poly, i);
@@ -173,15 +181,20 @@ std::vector<Triangle> clipTriangle(const Triangle &tri) {
   // std::cout << "size poly:" << poly.size();
 
   // convert polygon to triangles
-  std::vector<Triangle> tris;
+
   Triangle t;
   int l = poly.size() - 2;
   for (int i = 0; i < l; i++) {
     t.v0 = poly[0];
     t.v1 = poly[i + 1];
     t.v2 = poly[i + 2];
-    tris.push_back(t);
+
+    temp.v0.posClip = t.v0;
+    temp.v1.posClip = t.v1;
+    temp.v2.posClip = t.v2;
+
+    res.push_back(temp);
   }
   // std::cout << "size poly : " << tris.size() << std::endl;
-  return tris;
+  return res;
 }
