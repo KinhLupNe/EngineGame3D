@@ -1,6 +1,10 @@
 ﻿#include "Render.h"
+#include "../Debugger/DebugLogger.h"
 #include "../Pipeline/FragmentShader.h"
 //  get Triangle in clip space (model ->view->project ->triangle)
+#ifdef byte
+#undef byte
+#endif
 vector<TriangleOutput> Render::getTriangleClip(const VertexBuffer &vbo,
                                                const IndexBuffer &ibo,
                                                Model *model) {
@@ -74,6 +78,9 @@ void Render::present() {
           // fragment shader
           //
           for (auto &v : vps) {
+            // lỗi đâu đó trong thuật toán cắt tam giác, dùng tạm hạ sách vậy
+            if (v.posScreen.y >= height || v.posScreen.x >= width)
+              continue;
             if (frameBuffer.getZBuffer()[v.posScreen.y][v.posScreen.x] >
                 v.posScreen.z) {
               FragmentPayLoad fragmentPayLoad(v.normal, v.posScreen.z,
@@ -92,16 +99,25 @@ void Render::present() {
       }
     }
   }
-  frameBuffer.put(1, 1, "CAMERA");
-  frameBuffer.put(1, 2, "X CAMERA: ", scene.camera->pos.x);
-  frameBuffer.put(1, 3, "Y CAMERA: ", scene.camera->pos.y);
-  frameBuffer.put(1, 4, "Z CAMERA: ", scene.camera->pos.z);
-  frameBuffer.put(1, 5, "CAMERA ANGLE");
-  frameBuffer.put(1, 6, "X ANGLE: ", scene.camera->camAngle.x);
-  frameBuffer.put(1, 7, "Y ANGLE: ", scene.camera->camAngle.y);
-  frameBuffer.put(1, 8, "Z ANGLE: ", scene.camera->camAngle.z);
-
+  cameraInfo();
   frameBuffer.display();
 }
 
-;
+void Render::cameraInfo() {
+  auto &log = DebugLogger::Instance();
+  log.LogAt(1, 1, "CAMERA POS");
+  log.LogAt(1, 2,
+            "X: " + std::to_string(scene.camera->pos.x) +
+                " Y: " + std::to_string(scene.camera->pos.y) +
+                " Z: " + std::to_string(scene.camera->pos.z));
+  log.LogAt(1, 3, "YAW: " + std::to_string(scene.camera->yaw));
+  log.LogAt(1, 4, "PITCH: " + std::to_string(scene.camera->pitch));
+  log.LogAt(1, 5,
+            "FORWARD: " + std::to_string(scene.camera->getForward().x) + " " +
+                std::to_string(scene.camera->getForward().y) + " " +
+                std::to_string(scene.camera->getForward().z));
+  log.LogAt(1, 6,
+            "MODEL 0" + std::to_string(scene.models[0]->position.x) + " " +
+                std::to_string(scene.models[0]->position.y) + " " +
+                std::to_string(scene.models[0]->position.z));
+}

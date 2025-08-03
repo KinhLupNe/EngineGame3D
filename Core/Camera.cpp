@@ -1,22 +1,32 @@
 #include "Camera.h"
 
-Camera::Camera(const Vec3 &pos, const Vec3 &target, const Vec3 &up,
-               const float &zNear, const float &zFar, const float &r,
-               const float &l, const float &t, const float &b)
+Camera::Camera(Vec3 pos, float yaw, float pitch, float zNear, float zFar,
+               float left, float right, float bottom, float top)
+    : pos(pos), yaw(yaw), pitch(pitch), zNear(zNear), zFar(zFar), l(left),
+      r(right), b(bottom), t(top) {}
 
-    : pos(pos), target(target), up(up), zNear(zNear), zFar(zFar), r(r), l(l),
-      t(t), b(b) {
-  camAngle = Vec3(0, 0, 0); // Khởi tạo góc nhìn camera
+Mat4 Camera::getViewMatrix() const {
+  // 1) Tính forward sao cho yaw=0 → forward=(0,0,-1)
+  Vec3 forward{std::cos(pitch) * std::sin(-yaw), std::sin(pitch),
+               -std::cos(pitch) * std::cos(-yaw)};
+  forward = forward.normalize();
+
+  // 2) Tính right, up vector
+  Vec3 worldUp{0.0f, 1.0f, 0.0f};
+  Vec3 left = (forward * worldUp).normalize();
+  Vec3 up = (left * forward).normalize();
+
+  // 3) Build view matrix
+  return Mat4::lookAt(pos, pos + forward, up);
 }
-
-Mat4 Camera::getViewMatrix() {
-  Vec4 f = Vec4(-pos.x + target.x, -pos.y + target.y, -pos.z + target.z, 0.0f);
-  f = Mat4::getRotationMatrix(Vec3(0.0f, 0.0f, 0.0f) - camAngle) * f;
-  Vec3 fVec = Vec3(f.x, f.y, f.z).normalize();
-  Vec3 center = fVec + pos; // Tính tâm của camera
-
-  return Mat4::lookAt(pos, center, up);
-}
-Mat4 Camera::getProjectionMatrix() {
+Mat4 Camera::getProjectionMatrix() const {
   return Mat4::persentive(zNear, zFar, r, l, t, b);
+}
+Vec3 Camera::getForward() const {
+  Vec3 forward{
+      std::cos(pitch) * std::sin(yaw), std::sin(pitch),
+      -std::cos(pitch) * std::cos(yaw) // dấu + ở đây
+  };
+  forward = forward.normalize();
+  return forward;
 }

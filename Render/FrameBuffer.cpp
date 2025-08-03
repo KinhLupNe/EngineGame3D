@@ -16,7 +16,7 @@ void FrameBuffer::clear() {
   }
 }
 char FrameBuffer::tBufferFromZBuffer(float z) {
-  char tList[] = "@$#Mmn*;:,.";
+  char tList[] = "@n*;:,.";
 
   int l = sizeof(tList) / sizeof(char);
   float step = 1.0f / (float)(l);
@@ -43,7 +43,7 @@ void FrameBuffer::display() {
   frame.reserve(height * (width + 1));
   for (int i = 0; i < this->height; i++) {
     for (int j = 0; j < this->width; j++) {
-      frame.push_back(tBuffer[i][j]);
+      frame.push_back(tBuffer[this->height - 1 - i][j]);
     }
     frame.push_back('\n');
   }

@@ -3,21 +3,25 @@
 #include "../Math/Math.h"
 class Camera {
 public:
-  Vec3 pos;
-  Vec3 target;
-  Vec3 up;
-  Vec3 camAngle; // góc nhìn của camera
-  float zNear;
-  float zFar;
-  float r, l, t, b;
+  Vec3 pos;         // Camera position
+  float yaw;        // Horizontal angle (radians)
+  float pitch;      // Vertical angle (radians)
+  float zNear;      // Near clipping plane
+  float zFar;       // Far clipping plane
+  float l, r, b, t; // Frustum bounds: left, right, bottom, top
 
-  Camera(const Vec3 &pos, const Vec3 &target, const Vec3 &up,
-         const float &zNear, const float &zFar, const float &r, const float &l,
-         const float &t, const float &b);
+  Camera(Vec3 pos = Vec3{0.0f, 0.0f, 0.0f}, float yaw = 0.0f,
+         float pitch = 0.0f, float zNear = 0.1f, float zFar = 100.0f,
+         float left = -1.0f, float right = 1.0f, float bottom = -1.0f,
+         float top = 1.0f);
 
-  ~Camera() = default;
-  Mat4 getViewMatrix();
-  Mat4 getProjectionMatrix();
+  // Returns view matrix from position and yaw/pitch
+  Mat4 getViewMatrix() const;
+
+  // Returns projection matrix defined by frustum
+  Mat4 getProjectionMatrix() const;
+
+  Vec3 getForward() const;
 };
 
 #endif

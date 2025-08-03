@@ -5,7 +5,7 @@
 class DistantLight : public Light {
 public:
   Vec3 dir = Vec3(0.0f, 0.0f,
-                  -1.0f); // hướng chiếu sáng(mặc định là theo chiều âm trục Z)
+                  1.0f); // hướng chiếu sáng(mặc định là theo chiều âm trục Z)
   DistantLight(const Mat4 &l2w, const float &intensity = 1.0f,
                const Vec3 &color = Vec3(1.0f, 1.0f, 1.0f))
       : Light{intensity, color} {

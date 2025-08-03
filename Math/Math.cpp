@@ -182,13 +182,14 @@ Mat4 Mat4::getScaleMatrix(const Vec3 &s) {
 }
 
 Mat4 Mat4::lookAt(const Vec3 &pos, const Vec3 &target, const Vec3 &up) {
-  Vec3 f =
-      Vec3(pos.x - target.x, pos.y - target.y, pos.z - target.z).normalize();
-  Vec3 l = (f * up).normalize();
-  Vec3 u = (l * f).normalize();
+  Vec3 f = (target - pos).normalize();
+  Vec3 s = (f * up).normalize();
+  Vec3 u = up;
 
-  float mb[4][4] = {
-      {l.x, l.y, l.z, 0}, {u.x, u.y, u.z, 0}, {f.x, f.y, f.z, 0}, {0, 0, 0, 1}};
+  float mb[4][4] = {{s.x, s.y, s.z, 0},
+                    {u.x, u.y, u.z, 0},
+                    {-f.x, -f.y, -f.z, 0},
+                    {0, 0, 0, 1}};
 
   Mat4 M = Mat4(mb);
 

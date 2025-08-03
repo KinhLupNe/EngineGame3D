@@ -41,7 +41,8 @@ public:
   // rassterization(tri(after backFaceCull, primitiveClipping) )
   vector<VertexOutput> VPbuffer(const TriangleOutput &triOut);
   // fragment shader
-
+  // debug logger
+  void cameraInfo();
   void present();
 };
 #endif
