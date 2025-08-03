@@ -1,7 +1,8 @@
 {
 	"InstallScripts" : 
 	[
-		"E:/IT/devGame3D/Engine3D/out/build/x64-debug/cmake_install.cmake"
+		"E:/IT/devGame3D/Engine3D/out/build/x64-debug/cmake_install.cmake",
+		"E:/IT/devGame3D/Engine3D/out/build/x64-debug/tools/PSLogger/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

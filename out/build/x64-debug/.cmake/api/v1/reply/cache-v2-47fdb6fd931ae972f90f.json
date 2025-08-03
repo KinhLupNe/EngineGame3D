@@ -843,7 +843,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -1352,6 +1352,42 @@
 			],
 			"type" : "STATIC",
 			"value" : "E:/IT/devGame3D/Engine3D"
+		},
+		{
+			"name" : "PSLogger_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "E:/IT/devGame3D/Engine3D/out/build/x64-debug/tools/PSLogger"
+		},
+		{
+			"name" : "PSLogger_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "OFF"
+		},
+		{
+			"name" : "PSLogger_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "E:/IT/devGame3D/Engine3D/tools/PSLogger"
 		}
 	],
 	"kind" : "cache",
