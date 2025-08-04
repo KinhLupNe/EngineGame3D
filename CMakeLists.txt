@@ -36,6 +36,9 @@ add_executable(Engine3D
         Pipeline/Rasterization.cpp Pipeline/Rasterization.h
         Scene/Scene.cpp      Scene/Scene.h
         Debugger/DebugLogger.cpp   Debugger/DebugLogger.h
+	Game/GameRender/GameRender.cpp Game/GameRender/GameRender.h
+	Game/World/Block.cpp Game/World/Block.h
+	Game/World/World.cpp Game/World/World.h
 )
 
 # Flags chung cho Debug/Release

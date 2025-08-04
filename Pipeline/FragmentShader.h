@@ -29,7 +29,7 @@ public:
                  const DistantLight &distantLight =
                      DistantLight(Mat4::getRotationMatrix(Vec3(0, 0, 0)), 1.0f,
                                   Vec3(1.0f, 1.0f, 1.0f)),
-                 const std::string &ramp = ".,:;*nM#@")
+                 const std::string &ramp = ".,:;+*onm@")
       : ambientLight(ambientLight), distantLight(distantLight), ramp(ramp) {}
   ~FragmentShader() = default;
 

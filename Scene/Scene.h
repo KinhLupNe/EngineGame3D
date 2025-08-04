@@ -13,6 +13,8 @@ public:
   void addModel(Model *m);
   void removeModel(Model *m);
   void clearModels();
+
+  void drawBlock(const Vec3 & pos, Mesh *mesh);
 };
 
 #endif

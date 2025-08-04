@@ -12,3 +12,8 @@ void Scene::removeModel(Model *m) {
 }
 
 void Scene::clearModels() { models.clear(); }
+
+void Scene::drawBlock(const Vec3& pos, Mesh *mesh) {
+
+    models.emplace_back(new Model(pos, mesh));
+}

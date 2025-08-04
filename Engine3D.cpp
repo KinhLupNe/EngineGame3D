@@ -5,6 +5,8 @@
 #include "Core/Buffer.h"
 #include "Core/Camera.h"
 #include "Debugger/DebugLogger.h"
+#include "Game/GameRender/GameRender.h"
+#include "Game/World/World.h"
 #include "Geometry/Mesh.h"
 #include "Geometry/Model.h"
 #include "Math/Math.h"
@@ -14,11 +16,12 @@
 #include <conio.h>
 #include <cstdlib>
 #include <cstring>
+#include <random>
 #include <vector>
 #include <windows.h>
 using namespace std;
-#define WIDTH 200
-#define HEIGHT 70
+#define WIDTH 300
+#define HEIGHT 105
 
 #include <cstdlib>
 #include <fstream>
@@ -49,7 +52,7 @@ void hide_cursor() {
   // Lấy thông tin hiện tại của con trỏ
   GetConsoleCursorInfo(hConsole, &cursorInfo);
 
-  // Ẩn con trỏ
+  // Ẩn con tr
   cursorInfo.bVisible = FALSE;
   SetConsoleCursorInfo(hConsole, &cursorInfo);
 }
@@ -65,22 +68,30 @@ std::string build_frame() {
 }
 
 int main() {
-  Render render = Render(WIDTH, HEIGHT);
+  // Render render = Render(WIDTH, HEIGHT);
+  GameRender gameRender = GameRender(WIDTH, HEIGHT);
+
+  Camera cam = Camera(Vec3(0, 0, 8), 0, 0, 0.5f, 100.0f,
+                      (float(WIDTH) / float(HEIGHT)) * 0.5f, 3.14 / 3);
+  gameRender.renderer.scene.camera = &cam;
+  World world = World(2, 1, 2);
+  world.init();
+  gameRender.drawWorld(world);
 
   hide_cursor();
-  Mesh cube = Mesh::createCube(12, 12, 12);
+  /*Mesh cube = Mesh::createCube(1, 1, 1);
   Model model(&cube);
   Model model1(&cube);
 
   render.loadFromModel(model);
   render.loadFromModel(model1);
 
-  Camera cam =
-      Camera(Vec3(0, 0, 50), 0, 0, 15.0f, 100.0f, -12.0f, 12.0f, -12.0f, 12.0f);
+  Camera cam = Camera(Vec3(0, 0, 50), 0, 0, 0.1f, 100.0f,
+                      (float(WIDTH) / float(HEIGHT)) * 0.5f, 3.14 / 3);
 
-  model.position = Vec3(10, 0, 26);
-  model.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
-  model1.position = Vec3(20, 0, 20);
+  model.position = Vec3(10, 0, 10);
+  //  model.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
+  model1.position = Vec3(25, 5, 15);
   model1.rotation = Vec3(3.14 / 6, 3.14 / 6, 3.14 / 6);
 
   Scene scene;
@@ -88,77 +99,93 @@ int main() {
   scene.addModel(&model);
   scene.addModel(&model1);
   render.scene = scene;
-
+*/
   // scene :: camera + model
   // buffer :: vbo + ibo
 
   while (true) {
     if (_kbhit()) {
       char ch = _getch();
+      /*
+            if (ch == 'l') {
+              scene.models[0]->position = scene.models[0]->position + Vec3(1, 0,
+         0);
+            }
+            if (ch == 'j') {
+              scene.models[0]->position = scene.models[0]->position + Vec3(-1,
+         0, 0);
+            }
+            if (ch == 'i') {
+              scene.models[0]->position = scene.models[0]->position + Vec3(0, 1,
+         0);
+            }
 
-      if (ch == 'l') {
-        scene.models[0]->position = scene.models[0]->position + Vec3(1, 0, 0);
-      }
-      if (ch == 'j') {
-        scene.models[0]->position = scene.models[0]->position + Vec3(-1, 0, 0);
-      }
-      if (ch == 'i') {
-        scene.models[0]->position = scene.models[0]->position + Vec3(0, 1, 0);
-      }
+            if (ch == 'k') {
+              scene.models[0]->position = scene.models[0]->position + Vec3(0,
+         -1, 0);
+            }
 
-      if (ch == 'k') {
-        scene.models[0]->position = scene.models[0]->position + Vec3(0, -1, 0);
-      }
-
-      if (ch == 'o') {
-        scene.models[0]->position = scene.models[0]->position + Vec3(0, 0, 1);
-      }
-      if (ch == 'u') {
-        scene.models[0]->position = scene.models[0]->position + Vec3(0, 0, -1);
-      }
+            if (ch == 'o') {
+              scene.models[0]->position = scene.models[0]->position + Vec3(0, 0,
+         1);
+            }
+            if (ch == 'u') {
+              scene.models[0]->position = scene.models[0]->position + Vec3(0, 0,
+         -1);
+            }*/
 
       if (ch == 's') {
-        render.scene.camera->pitch = render.scene.camera->pitch - 3.14 / 100;
+        gameRender.renderer.scene.camera->pitch =
+            gameRender.renderer.scene.camera->pitch - 3.14 / 100;
       }
       if (ch == 'w') {
-        render.scene.camera->pitch = render.scene.camera->pitch + 3.14 / 100;
+        gameRender.renderer.scene.camera->pitch =
+            gameRender.renderer.scene.camera->pitch + 3.14 / 100;
       }
       if (ch == 'd') {
-        render.scene.camera->yaw = render.scene.camera->yaw - 3.14 / 100;
+        gameRender.renderer.scene.camera->yaw =
+            gameRender.renderer.scene.camera->yaw - 3.14 / 100;
       }
       if (ch == 'a') {
-        render.scene.camera->yaw = render.scene.camera->yaw + 3.14 / 100;
+        gameRender.renderer.scene.camera->yaw =
+            gameRender.renderer.scene.camera->yaw + 3.14 / 100;
       }
       if (ch == 'h') {
-        render.scene.camera->pos = render.scene.camera->pos + Vec3(1, 0, 0);
+        gameRender.renderer.scene.camera->pos =
+            gameRender.renderer.scene.camera->pos + Vec3(0.2, 0, 0);
       }
       if (ch == 'f') {
-        render.scene.camera->pos = render.scene.camera->pos + Vec3(-1, 0, 0);
+        gameRender.renderer.scene.camera->pos =
+            gameRender.renderer.scene.camera->pos + Vec3(-0.2, 0, 0);
       }
       if (ch == 't') {
-        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, 1, 0);
+        gameRender.renderer.scene.camera->pos =
+            gameRender.renderer.scene.camera->pos + Vec3(0, 0.2, 0);
       }
       if (ch == 'g') {
-        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, -1, 0);
+        gameRender.renderer.scene.camera->pos =
+            gameRender.renderer.scene.camera->pos + Vec3(0, -0.2, 0);
       }
       if (ch == 'y') {
-        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, 0, 1);
+        gameRender.renderer.scene.camera->pos =
+            gameRender.renderer.scene.camera->pos + Vec3(0, 0, 0.2);
       }
       if (ch == 'r') {
-        render.scene.camera->pos = render.scene.camera->pos + Vec3(0, 0, -1);
+        gameRender.renderer.scene.camera->pos =
+            gameRender.renderer.scene.camera->pos + Vec3(0, 0, -0.2);
       }
     }
     // render.scene.camera->camAngle =
     //  render.scene.camera->camAngle + Vec3(-3.14 / 100, 0, 0);
-    render.scene.models[0]->rotation =
+    // render.scene.models[0]->rotation =
+    //  render.scene.models[0]->rotation +
+    //(Vec3(3.14 / 100, 3.14 / 100, 3.14 / 100));
+    /*render.scene.models[1]->rotation =
         render.scene.models[0]->rotation +
-        (Vec3(3.14 / 100, 3.14 / 100, 3.14 / 100));
-    render.scene.models[1]->rotation =
-        render.scene.models[0]->rotation +
-        (Vec3(3.14 / 200, 3.14 / 200, 3.14 / 200));
+        (Vec3(3.14 / 200, 3.14 / 200, 3.14 / 200));*/
 
     setColor(5, 0);
-    render.present();
+    gameRender.renderer.present();
     Sleep(64);
   }
 

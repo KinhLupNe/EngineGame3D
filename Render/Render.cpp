@@ -1,5 +1,6 @@
 ﻿#include "Render.h"
 #include "../Debugger/DebugLogger.h"
+#include "../Math/Math.h"
 #include "../Pipeline/FragmentShader.h"
 //  get Triangle in clip space (model ->view->project ->triangle)
 #ifdef byte
@@ -92,7 +93,7 @@ void Render::present() {
               char shade = fragmentShader.shade();
 
               frameBuffer.set(v.posScreen.x, v.posScreen.y, v.posScreen.z,
-                              shade);
+                              frameBuffer.tBufferFromZBuffer(v.posScreen.z));
             }
           }
         }
@@ -116,8 +117,9 @@ void Render::cameraInfo() {
             "FORWARD: " + std::to_string(scene.camera->getForward().x) + " " +
                 std::to_string(scene.camera->getForward().y) + " " +
                 std::to_string(scene.camera->getForward().z));
-  log.LogAt(1, 6,
-            "MODEL 0" + std::to_string(scene.models[0]->position.x) + " " +
-                std::to_string(scene.models[0]->position.y) + " " +
-                std::to_string(scene.models[0]->position.z));
+}
+
+// API
+void Render::drawBlock(Vec3 pos, Mesh *mesh) {
+  this->scene.drawBlock(pos, mesh);
 }

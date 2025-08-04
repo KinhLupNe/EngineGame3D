@@ -1,9 +1,9 @@
 #include "Camera.h"
 
 Camera::Camera(Vec3 pos, float yaw, float pitch, float zNear, float zFar,
-               float left, float right, float bottom, float top)
-    : pos(pos), yaw(yaw), pitch(pitch), zNear(zNear), zFar(zFar), l(left),
-      r(right), b(bottom), t(top) {}
+               float aspect, float fovY)
+    : pos(pos), yaw(yaw), pitch(pitch), zNear(zNear), aspect(aspect),
+      fovY(fovY) {}
 
 Mat4 Camera::getViewMatrix() const {
   // 1) Tính forward sao cho yaw=0 → forward=(0,0,-1)
@@ -20,7 +20,11 @@ Mat4 Camera::getViewMatrix() const {
   return Mat4::lookAt(pos, pos + forward, up);
 }
 Mat4 Camera::getProjectionMatrix() const {
-  return Mat4::persentive(zNear, zFar, r, l, t, b);
+  float top = tanf(fovY * 0.5f) * zNear; // half height at near plane
+  float right = top * aspect;            // half width
+  float left = -right;
+  float bottom = -top;
+  return Mat4::persentive(zNear, zFar, right, left, top, bottom);
 }
 Vec3 Camera::getForward() const {
   Vec3 forward{

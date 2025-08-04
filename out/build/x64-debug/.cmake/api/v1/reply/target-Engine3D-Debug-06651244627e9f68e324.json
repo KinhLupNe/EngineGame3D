@@ -34,7 +34,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 59,
+				"line" : 62,
 				"parent" : 0
 			}
 		]
@@ -80,7 +80,10 @@
 				20,
 				22,
 				24,
-				26
+				26,
+				28,
+				30,
+				32
 			]
 		}
 	],
@@ -122,7 +125,10 @@
 				20,
 				22,
 				24,
-				26
+				26,
+				28,
+				30,
+				32
 			]
 		},
 		{
@@ -142,7 +148,10 @@
 				21,
 				23,
 				25,
-				27
+				27,
+				29,
+				31,
+				33
 			]
 		}
 	],
@@ -300,6 +309,39 @@
 		{
 			"backtrace" : 1,
 			"path" : "Debugger/DebugLogger.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Game/GameRender/GameRender.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Game/GameRender/GameRender.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Game/World/Block.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Game/World/Block.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Game/World/World.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Game/World/World.h",
 			"sourceGroupIndex" : 1
 		}
 	],

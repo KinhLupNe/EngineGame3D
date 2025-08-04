@@ -44,5 +44,8 @@ public:
   // debug logger
   void cameraInfo();
   void present();
+
+  // api
+  void drawBlock(Vec3 pos, Mesh *mesh);
 };
 #endif

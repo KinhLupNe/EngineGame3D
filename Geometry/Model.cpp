@@ -3,6 +3,8 @@
 Model::Model() = default;
 Model::~Model() = default;
 Model::Model(Mesh *m) : mesh(m) {};
+Model::Model(const Vec3& pos): position(pos) {};
+Model::Model(const Vec3& pos, Mesh *m): position(pos), mesh(m) {};
 
 Mat4 Model::getWorldMatrix() {
   Mat4 res;
