@@ -1,9 +1,7 @@
 #include "GameRender.h"
 
 GameRender::GameRender(const int &width, const int &height)
-    : renderer(width, height) {
-
-}
+    : renderer(width, height) {}
 void GameRender::drawWorld(const World &world) {
   auto list = world.getVisualBlockPos();
   for (auto &v : list) {
@@ -11,7 +9,7 @@ void GameRender::drawWorld(const World &world) {
   }
 }
 void GameRender::drawBlock(const BlockType &block, const Vec3 &position) {
-  if (block == BlockType::STONE)
-    renderer.drawBlock(position, &m);
-  renderer.loadFromModel(&m);
+  //  if (block == BlockType::STONE)
+  //  renderer.drawBlock(position, &m);
+  // renderer.loadFromModel(&m);
 }

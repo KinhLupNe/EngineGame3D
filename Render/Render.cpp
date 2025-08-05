@@ -93,7 +93,7 @@ void Render::present() {
               char shade = fragmentShader.shade();
 
               frameBuffer.set(v.posScreen.x, v.posScreen.y, v.posScreen.z,
-                              frameBuffer.tBufferFromZBuffer(v.posScreen.z));
+                              shade);
             }
           }
         }

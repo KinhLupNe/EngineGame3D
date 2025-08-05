@@ -26,12 +26,33 @@ public:
   Vec3 operator+(const Vec3 &other) const;
   Vec3 operator-(const Vec3 &other) const;
   Vec3 operator*(const float &t) const;
+  bool operator==(const Vec3 &o) const;
+   bool operator!=(const Vec3 &o) const;
 
   static float multi(const Vec3 &a, const Vec3 &b);
   void rotationVec3(float radX, float radY, float radZ);
+
   Vec3 normalize();
   static float crossPro(const Vec3 &a, const Vec3 &b, const Vec3 &c);
 };
+
+// Sau khi kết thúc struct Vec3:
+#include <functional>  // để có std::hash
+
+namespace std {
+  template<>
+  struct hash<Vec3> {
+    size_t operator()(Vec3 const& v) const noexcept {
+      // Một cách đơn giản: kết hợp hash từng component
+      auto h1 = std::hash<float>{}(v.x);
+      auto h2 = std::hash<float>{}(v.y);
+      auto h3 = std::hash<float>{}(v.z);
+      // Kỹ thuật XOR–shift
+      return h1 ^ (h2 << 1) ^ (h3 << 2);
+    }
+  };
+}
+
 
 class Vec4 {
 public:

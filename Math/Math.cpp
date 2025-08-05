@@ -59,6 +59,12 @@ Vec3 Vec3::normalize() {
 float Vec3::crossPro(const Vec3 &a, const Vec3 &b, const Vec3 &c) {
   return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
 }
+bool Vec3::operator==(const Vec3 &o) const {
+  // Nếu muốn so sánh float an toàn hơn, có thể thay bằng khoảng epsilon
+  return x == o.x && y == o.y && z == o.z;
+}
+
+ bool Vec3::operator!=(const Vec3 &o) const { return !(*this == o); }
 Vec4::Vec4(float x, float y, float z, float w) {
   this->x = x;
   this->y = y;

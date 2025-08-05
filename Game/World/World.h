@@ -11,6 +11,7 @@ private:
   int width, height, depth;
 
 public:
+  World() = default;
   World(int width, int height, int depth)
       : width(width), height(height), depth(depth) {
     data.resize(width * height * depth, BlockType::AIR);
@@ -50,5 +51,9 @@ public:
     }
     return res;
   }
+
+  int getWidth() { return width; }
+  int getHeight() { return height; }
+  int getDepth() { return depth; }
 };
 #endif

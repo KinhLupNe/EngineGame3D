@@ -9,8 +9,11 @@ class GameRender {
 
 public:
   Render renderer;
-  Mesh m = Mesh::createCube(1.0f, 1.0f, 1.0f);
+  Mesh mBlock = Mesh::createCube(1.0f, 1.0f, 1.0f);
+  Mesh nWorld;
+  World *world;
 
+  GameRender() = default;
   GameRender(const int &width, const int &height);
   ~GameRender() = default;
   //  void init(int width, int height);

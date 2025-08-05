@@ -10,7 +10,8 @@ public:
   float zFar;  // Far clipping plane
   float aspect;
   float fovY; // Frustum bounds: left, right, bottom, top
-
+              //
+  ~Camera() = default;
   Camera(Vec3 pos = Vec3{0.0f, 0.0f, 0.0f}, float yaw = 0.0f,
          float pitch = 0.0f, float zNear = 0.1f, float zFar = 100.0f,
          float aspect = 140 / 600, float fovY = 3.14 / 3);

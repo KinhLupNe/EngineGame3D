@@ -13,6 +13,7 @@ private:
   vector<vector<char>> tBuffer;
 
 public:
+  FrameBuffer() = default;
   FrameBuffer(const int &width, const int &height);
   ~FrameBuffer() = default;
   // reset buffer;

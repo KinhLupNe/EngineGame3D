@@ -20,6 +20,12 @@ struct Vertex {
   Vec3 normalize;
   Vec3 color = Vec3(1.0f, 1.0f, 1.0f); // Màu sắc của đỉnh
 
-  Vertex(Vec3 p, Vec3 n) : positon(p), normalize(n) {}
+  Vertex(Vec3 p, Vec3 n) : positon(p), normalize(n) {
+    normalize = normalize.normalize();
+  }
+  bool operator==(const Vertex &o) const {
+    return positon == o.positon && color == o.color;
+  }
+  // bool operator!=(const Vertex &o) const { return !(*this == o); }
 };
 #endif

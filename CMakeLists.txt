@@ -39,6 +39,8 @@ add_executable(Engine3D
 	Game/GameRender/GameRender.cpp Game/GameRender/GameRender.h
 	Game/World/Block.cpp Game/World/Block.h
 	Game/World/World.cpp Game/World/World.h
+	Game/Game/Game.cpp Game/Game/Game.h
+	Game/Enities/Player.cpp Game/Enities/Player.h
 )
 
 # Flags chung cho Debug/Release

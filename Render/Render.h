@@ -21,6 +21,7 @@ public:
   int height;
   FrameBuffer frameBuffer;
 
+  Render() = default;
   Render(const int &width, const int &height)
       : width(width), height(height), frameBuffer(width, height) {}
   ~Render() = default;
