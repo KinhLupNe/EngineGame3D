@@ -8,17 +8,20 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+
 struct FragmentPayLoad {
-  Vec3 color;  // màu sắc của điểm ảnh
+  Vec3 color; // màu sắc của điểm ảnh
   Vec3 normal; // vector pháp tuyến tại điểm ảnh
   float depth; // độ sâu của điểm ảnh
-  Vec3 posW;   // vị trí của điểm ảnh trong không gian thế giới
+  Vec3 posW; // vị trí của điểm ảnh trong không gian thế giới
   ~FragmentPayLoad() = default;
+
   FragmentPayLoad(const Vec3 &normal = Vec3(0.0f, 0.0f, 1.0f),
                   const float &depth = 1.0f,
                   const Vec3 &position = Vec3(0.0f, 0.0f, 0.0f),
                   const Vec3 &color = Vec3(1.0f, 1.0f, 1.0f))
-      : normal(normal), depth(depth), posW(position), color(color) {}
+    : normal(normal), depth(depth), posW(position), color(color) {
+  }
 };
 
 class FragmentShader {
@@ -32,8 +35,10 @@ public:
                  const DistantLight &distantLight =
                      DistantLight(Mat4::getRotationMatrix(Vec3(0, 0, 0)), 1.0f,
                                   Vec3(1.0f, 1.0f, 1.0f)),
-                 const std::string &ramp = ".,:;+*onm@")
-      : ambientLight(ambientLight), distantLight(distantLight), ramp(ramp) {}
+                 const std::string &ramp = ".,:;+*omM@")
+    : ambientLight(ambientLight), distantLight(distantLight), ramp(ramp) {
+  }
+
   ~FragmentShader() = default;
 
   char shade() const {
@@ -55,8 +60,8 @@ public:
     } else if (I > 1.0f) {
       I = 1.0f; // đảm bảo không có giá trị vượt quá 1
     }
-    float step = 1.0f / (float)(ramp.size());
-    return ramp[(int)(I / step)];
+    float step = 1.0f / (float) (ramp.size());
+    return ramp[(int) (I / step)];
     // return I;
   }
 };

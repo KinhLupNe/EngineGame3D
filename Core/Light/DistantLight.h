@@ -2,14 +2,14 @@
 #define DIFFUSELIGHT_H
 #include "Light.h"
 #include <limits>
+
 class DistantLight : public Light {
 public:
-  Vec3 dir = Vec3(1.0f, 1.0f,
+  Vec3 dir = Vec3(0.5f, 0.5f,
                   1.0f); // hướng chiếu sáng (mặc định là theo chiều âm trục Z)
   DistantLight(const Mat4 &l2w, const float &intensity = 1.0f,
                const Vec3 &color = Vec3(1.0f, 1.0f, 1.0f))
-      : Light{intensity, color} {
-
+    : Light{intensity, color} {
     Vec4 d = Vec4(dir.x, dir.y, dir.z, 0.0f);
     d = l2w * d;
     dir = Vec3(d.x, d.y, d.z);
