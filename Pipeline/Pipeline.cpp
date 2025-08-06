@@ -10,7 +10,7 @@ VertexOutput Pipeline::vertexShader(const Vertex &vertex,
   VertexOutput res;
   res.normal = vertex.normalize;
   res.color = vertex.color;
-  res.posView = Vec3(vertex.positon.x, vertex.positon.y, vertex.positon.z);
+  res.posWorld = vertex.positon;
   // std::cout << "vertex: " << vertex.positon.x << ", " << vertex.positon.y
   //<< ", " << vertex.positon.z << std::endl;
   // Chuyển đổi vị trí của đỉnh từ không gian mô hình sang không gian clip
@@ -22,6 +22,10 @@ VertexOutput Pipeline::vertexShader(const Vertex &vertex,
       Vec3(transformedVertex.x, transformedVertex.y, transformedVertex.z);
   transformedVertex = projectionMatrix * transformedVertex;
   res.posClip = transformedVertex;
+  // std::cout << "posView: " << res.posView.x << ", " << res.posView.y << ", "
+  //<< res.posView.z << std::endl;
+  // std::cout << "posClip: " << res.posClip.x << ", " << res.posClip.y << ", "
+  //<< res.posClip.z << res.posClip.z<< std::endl;
 
   return res;
 }

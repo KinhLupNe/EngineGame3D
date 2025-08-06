@@ -209,8 +209,7 @@ Mat4 Mat4::persentive(const float &zNear, const float &zFar, const float &r,
                       const float &l, const float &t, const float &b) {
   float m[4][4] = {{(2 * zNear) / (r - l), 0, (r + l) / (r - l), 0},
                    {0, (2 * zNear) / (t - b), (t + b) / (t - b), 0},
-                   {0, 0, -(zFar + zNear) / (zFar - zNear),
-                    (-2 * zFar * zNear) / (zFar - zNear)},
+                   {0, 0, -(zFar + zNear) / (zFar - zNear),(-2 * zFar * zNear) / (zFar - zNear) },
                    {0, 0, -1, 0}};
   Mat4 res = Mat4(m);
   return res;

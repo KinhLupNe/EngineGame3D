@@ -3,6 +3,7 @@
 #include "../Math/Math.h"
 #include <cstdint>
 struct VertexOutput {
+  Vec3 posWorld;
   Vec3 posView;   // position in view space
   Vec4 posClip;   // position in clip space
   Vec3 posScreen; // position in screen space

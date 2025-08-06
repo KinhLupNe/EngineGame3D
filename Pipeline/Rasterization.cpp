@@ -91,9 +91,11 @@ VertexOutput interpolateVertexOutput(const VertexOutput &a,
                                      const VertexOutput &c, const float &w0,
                                      const float &w1, const float &w2) {
   VertexOutput res;
+  res.posWorld = a.posWorld * w0 + b.posWorld * w1 + c.posWorld * w2;
   res.posView = a.posView * w0 + b.posView * w1 + c.posView * w2;
   res.posClip = a.posClip * w0 + b.posClip * w1 + c.posClip * w2;
-  res.normal = ((b.posView - a.posView) * (c.posView - b.posView)).normalize();
+  res.normal =
+      ((b.posWorld - a.posWorld) * (c.posWorld - b.posWorld)).normalize();
 
   res.color = a.color * w0 + b.color * w1 + c.color * w2;
   return res;

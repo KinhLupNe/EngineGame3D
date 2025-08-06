@@ -53,6 +53,8 @@ void Render::present() {
   int l = scene.models.size();
   frameBuffer.clear();
   for (int i = 0; i < l; i++) {
+    // test z;
+
     // vertex in clip space(after projection), assemble vertex to triangle
     vector<TriangleOutput> tris =
         getTriangleClip(vbos[i], ibos[i], scene.models[i]);
@@ -67,12 +69,6 @@ void Render::present() {
         // primitive clipping Triangles
         vector<TriangleOutput> temps = p.primitiveClipping(tri);
         for (auto &temp : temps) {
-          // cout << temp.v0.normal.x << " " << temp.v0.normal.y << " "
-          //    << temp.v0.normal.z << endl;
-          // cout << temp.v1.normal.x << " " << temp.v1.normal.y << " "
-          //    << temp.v1.normal.z << endl;
-          // cout << temp.v2.normal.x << " " << temp.v2.normal.y << " "
-          //     << temp.v2.normal.z << endl;
 
           // rasterization
           vector<VertexOutput> vps = VPbuffer(temp);
@@ -85,15 +81,14 @@ void Render::present() {
             if (frameBuffer.getZBuffer()[v.posScreen.y][v.posScreen.x] >
                 v.posScreen.z) {
               FragmentPayLoad fragmentPayLoad(v.normal, v.posScreen.z,
-                                              v.posView, v.color);
+                                              v.posWorld, v.color);
               // cout << v.normal.x << " " << v.normal.y << " " << v.normal.z
               // << endl;
               FragmentShader fragmentShader;
               fragmentShader.fragmentPayLoad = fragmentPayLoad;
-              char shade = fragmentShader.shade();
 
               frameBuffer.set(v.posScreen.x, v.posScreen.y, v.posScreen.z,
-                              shade);
+                              fragmentShader.shade());
             }
           }
         }
@@ -101,6 +96,7 @@ void Render::present() {
     }
   }
   cameraInfo();
+  // system("pause");
   frameBuffer.display();
 }
 
