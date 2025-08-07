@@ -1,5 +1,4 @@
 #include "Culling.h"
-#include <iostream>
 #include <vector>
 // tính bitmark của vector
 int computeClipCode(const Vec4 &a) {
@@ -30,6 +29,7 @@ bool linePrimitiveCulling(Vec4 a, Vec4 b) {
   }
   return false; // không bị culling̣̣(nằm trong hoặc bị cắt)
 }
+
 // 2 điểm nằm ở phía ngoài thì trả về false;
 // 2 điểm nằm ở phía trong hoặc cắt thì trả về true, đồng thơi cập nhât tọa độ
 // mới
@@ -37,40 +37,38 @@ bool linePrimitiveCulling(Vec4 a, Vec4 b) {
 bool clipLineOnePlane(Vec4 &a, Vec4 &b, int plane) {
   float fa, fb;
   switch (plane) {
-  case 1:
-    fa = a.x + a.w;
-    fb = b.x + b.w;
-    break;
-  case 2:
-    fa = a.x - a.w;
-    fb = b.x - b.w;
-    break;
-  case 3:
-    fa = a.y + a.w;
-    fb = b.y + b.w;
-    break;
-  case 4:
-    fa = a.y - a.w;
-    fb = b.y - b.w;
-    break;
-  case 5:
-    fa = a.z + a.w;
-    fb = b.z + b.w;
-    break;
-  case 6:
-    fa = a.z - a.w;
-    fb = b.z - b.w;
-    break;
+    case 1:
+      fa = a.x + a.w;
+      fb = b.x + b.w;
+      break;
+    case 2:
+      fa = a.x - a.w;
+      fb = b.x - b.w;
+      break;
+    case 3:
+      fa = a.y + a.w;
+      fb = b.y + b.w;
+      break;
+    case 4:
+      fa = a.y - a.w;
+      fb = b.y - b.w;
+      break;
+    case 5:
+      fa = a.z + a.w;
+      fb = b.z + b.w;
+      break;
+    case 6:
+      fa = a.z - a.w;
+      fb = b.z - b.w;
+      break;
   }
   bool isNegPlane = (plane % 2 == 1);
   if (isNegPlane) {
-
     if (fa >= 0 && fb >= 0)
       return true; // ca 2 o trong
     if (fa < 0 && fb < 0)
       return false; // ca 2 o ngoai
   } else {
-
     if (fa <= 0 && fb <= 0)
       return true; // ca 2 o trong
     if (fa > 0 && fb > 0)
@@ -81,13 +79,11 @@ bool clipLineOnePlane(Vec4 &a, Vec4 &b, int plane) {
   Vec4 P = Vec4(a.x + t * (b.x - a.x), a.y + t * (b.y - a.y),
                 a.z + t * (b.z - a.z), a.w + t * (b.w - a.w));
   if (isNegPlane) {
-
     if (fa < 0)
       a = P;
     else
       b = P;
   } else {
-
     if (fa > 0)
       a = P;
     else
@@ -95,6 +91,7 @@ bool clipLineOnePlane(Vec4 &a, Vec4 &b, int plane) {
   }
   return true; // hoan thien cat, 2 diem o trong
 }
+
 // trả về false nếu nó nằm ngoài
 // trả về true vơi các trường hợp còn lại;
 
@@ -110,18 +107,18 @@ bool ClipLine(Vec4 &a, Vec4 &b) {
 
 bool isInFrustum(const Vec4 &a, int plane) {
   switch (plane) {
-  case 1:
-    return (a.x >= -a.w);
-  case 2:
-    return (a.x <= a.w);
-  case 3:
-    return (a.y >= -a.w);
-  case 4:
-    return (a.y <= a.w);
-  case 5:
-    return (a.z >= -a.w);
-  case 6:
-    return (a.z <= a.w);
+    case 1:
+      return (a.x >= -a.w);
+    case 2:
+      return (a.x <= a.w);
+    case 3:
+      return (a.y >= -a.w);
+    case 4:
+      return (a.y <= a.w);
+    case 5:
+      return (a.z >= -a.w);
+    case 6:
+      return (a.z <= a.w);
   }
   return false;
 }
@@ -159,12 +156,14 @@ std::vector<Vec4> clipPolyWithPlane(const std::vector<Vec4> &inPoly,
 }
 
 std::vector<TriangleOutput> clipTriangle(const TriangleOutput &triOut) {
-  Triangle tri = Triangle{Vec4(triOut.v0.posClip.x, triOut.v0.posClip.y,
-                               triOut.v0.posClip.z, triOut.v0.posClip.w),
-                          Vec4(triOut.v1.posClip.x, triOut.v1.posClip.y,
-                               triOut.v1.posClip.z, triOut.v1.posClip.w),
-                          Vec4(triOut.v2.posClip.x, triOut.v2.posClip.y,
-                               triOut.v2.posClip.z, triOut.v2.posClip.w)};
+  Triangle tri = Triangle{
+    Vec4(triOut.v0.posClip.x, triOut.v0.posClip.y,
+         triOut.v0.posClip.z, triOut.v0.posClip.w),
+    Vec4(triOut.v1.posClip.x, triOut.v1.posClip.y,
+         triOut.v1.posClip.z, triOut.v1.posClip.w),
+    Vec4(triOut.v2.posClip.x, triOut.v2.posClip.y,
+         triOut.v2.posClip.z, triOut.v2.posClip.w)
+  };
   std::vector<Vec4> poly = {tri.v0, tri.v1, tri.v2};
   std::vector<TriangleOutput> res;
   TriangleOutput temp = triOut;

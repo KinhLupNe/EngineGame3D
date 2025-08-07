@@ -34,7 +34,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 64,
+				"line" : 69,
 				"parent" : 0
 			}
 		]
@@ -85,7 +85,11 @@
 				30,
 				32,
 				34,
-				36
+				36,
+				38,
+				40,
+				43,
+				45
 			]
 		}
 	],
@@ -132,7 +136,11 @@
 				30,
 				32,
 				34,
-				36
+				36,
+				38,
+				40,
+				43,
+				45
 			]
 		},
 		{
@@ -157,7 +165,11 @@
 				31,
 				33,
 				35,
-				37
+				37,
+				39,
+				41,
+				42,
+				44
 			]
 		}
 	],
@@ -364,13 +376,57 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Game/Enities/Player.cpp",
+			"path" : "Game/Entities/Player.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
-			"path" : "Game/Enities/Player.h",
+			"path" : "Game/Entities/Player.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Pipeline/FragmentShader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Pipeline/FragmentShader.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Light/DistantLight.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Light/DistantLight.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Light/Light.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/Light/AmbientLight.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Core/Light/AmbientLight.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Core/VoxelGrid.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

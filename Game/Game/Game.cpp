@@ -17,7 +17,7 @@ void Game::init() {
   cam = Camera(Vec3(0, 0, 20), 0, 0, 0.5f, 100.0f,
                (static_cast<float>(WIDTH) / static_cast<float>(HEIGHT)) * 0.5,
                3.14 / 3);
-  gameRender.getRenderer().scene.camera = &cam;
+  gameRender.getRenderer().getScene().set_camera(&cam);
   player.init(&cam);
 
   // khổi tạo world , load vào game render
@@ -26,6 +26,7 @@ void Game::init() {
   // world.setBlock(0, 2, 3, BlockType::STONE);
   // H
   world.setBlock(0, 1, 3, BlockType::STONE);
+
   world.setBlock(0, 2, 3, BlockType::STONE);
 
   world.setBlock(0, 3, 3, BlockType::STONE);
@@ -105,7 +106,7 @@ void Game::init() {
   Mesh::buildMesh(grid, gameRender.getNWorld());
   model = Model(Vec3(0, 0, 0), &gameRender.getNWorld());
   gameRender.getRenderer().loadFromModel(model);
-  gameRender.getRenderer().scene.addModel(&model);
+  gameRender.getRenderer().getScene().addModel(&model);
 }
 
 void Game::updateLogic() {
@@ -135,10 +136,10 @@ void Game::updateLogic() {
     if (ch == 'g') {
       player.move(BACKWARD);
     }
-    if (ch == 'y') {
+    if (ch == ' ') {
       player.move(UP);
     }
-    if (ch == 'r') {
+    if (ch == 'e') {
       player.move(DOWN);
     }
   }

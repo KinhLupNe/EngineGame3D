@@ -5,7 +5,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include "../GameRender/GameRender.h"
-#include "../Enities/Player.h"
+#include "../Entities/Player.h"
 
 class Game {
 private:

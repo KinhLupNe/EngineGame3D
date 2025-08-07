@@ -5,8 +5,6 @@
 #include "..//World/World.h"
 
 class GameRender {
-    // private:
-
 private:
     Render renderer;
     Mesh mBlock = Mesh::createCube(1.0f, 1.0f, 1.0f);

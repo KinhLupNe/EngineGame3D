@@ -2,14 +2,17 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+
 float crossProduct(const Vec3 &a, const Vec3 &b) {
   return a.x * b.y - a.y * b.x;
 }
+
 bool isOnTriangle(const float &a, const float &b, const float &c) {
   if (a > 0 && b > 0 && c > 0)
     return true;
   return false;
 }
+
 // tap cac diem trong tam giac trong khong gian man hinh
 std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
                                          const VertexOutput &bOut,
@@ -18,15 +21,6 @@ std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
   Vec3 a = aOut.posScreen;
   Vec3 b = bOut.posScreen;
   Vec3 c = cOut.posScreen;
-  // std::cout << "a: " << a.x << ", " << a.y << ", " << a.z << std::endl;
-  // std::cout << "b: " << b.x << ", " << b.y << ", " << b.z << std::endl;
-  // std::cout << "c: " << c.x << ", " << c.y << ", " << c.z << std::endl;
-  // std::cout << "a: " << aOut.posView.x << ", " << aOut.posView.y << ", "
-  //        << aOut.posView.z << std::endl;
-  // std::cout << "b: " << bOut.posView.x << ", " << bOut.posView.y << ", "
-  //         << bOut.posView.z << std::endl;
-  // std::cout << "c: " << cOut.posView.x << ", " << cOut.posView.y << ", "
-  //         << cOut.posView.z << std::endl;
 
   std::vector<VertexOutput> res;
   Vec3 ab = b - a;
@@ -39,8 +33,8 @@ std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
   float yMax = fmax(a.y, fmax(b.y, c.y));
   float yMin = fmin(a.y, fmin(b.y, c.y));
   // duyet box
-  for (int i = (int)xMin; i <= xMax; i++) {
-    for (int j = (int)yMin; j <= yMax; j++) {
+  for (int i = (int) xMin; i <= xMax; i++) {
+    for (int j = (int) yMin; j <= yMax; j++) {
       Vec3 p = Vec3(i, j, 0);
       Vec3 ap = p - a;
       Vec3 bp = p - b;
@@ -62,7 +56,6 @@ std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
         VertexOutput pOut =
             interpolateVertexOutput(aOut, bOut, cOut, w0, w1, w2);
         pOut.posScreen = p;
-
         // thêm vào kết quả
         res.push_back(pOut);
       }
@@ -71,10 +64,10 @@ std::vector<VertexOutput> pointInTriagle(const VertexOutput &aOut,
 
   return res;
 }
+
 // noi suy dung phoi canh z-buffer
 float zBuffer(const Vec3 &a, const Vec3 &b, const Vec3 &c, const float &w0,
               const float &w1, const float &w2, const Triangle &t) {
-
   float res;
   // std::cout << "w1: " << w1 << ", w2: " << w2 << ", w0: " << w0 << std::endl;
   res = 1.0f / ((w0 / a.z) + (w1 / b.z) + (w2 / c.z));
@@ -85,6 +78,7 @@ float zBuffer(const Vec3 &a, const Vec3 &b, const Vec3 &c, const float &w0,
   //  std::cout << "res: " << res << std::endl;
   return res;
 }
+
 // nội suy posView, posClip, normal, color
 VertexOutput interpolateVertexOutput(const VertexOutput &a,
                                      const VertexOutput &b,

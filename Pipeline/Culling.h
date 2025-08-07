@@ -1,3 +1,7 @@
+/**
+ * @file Culling.h
+ * @brief các hàm culling: cắt tam giác -> cắt đa diện -> cắt mesh
+ */
 #ifndef CULLING_H
 #define CULLING_H
 #include "../Geometry/Vertex.h"

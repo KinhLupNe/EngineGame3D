@@ -6,7 +6,7 @@
 #define WORLD_H
 #include "..//..//Math/Math.h"
 #include "Block.h"
-#include <random>
+
 #include <vector>
 
 class World {
@@ -32,7 +32,7 @@ public:
   BlockType getDataBlock(int x, int y, int z) const;
 
   // trả về  vị tri các block không phải là AIR trong world
-  std::vector<Vec3> getVisualBlockPos() const;
+  std::vector<Vec3> getVisualBlockPos();
 
   // ------------getter, setter-----------------------
   const std::vector<BlockType> &getData() const {
