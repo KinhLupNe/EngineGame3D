@@ -16,7 +16,10 @@
 ## 📸 Demo
 
 ![demo terminal](./assets/demo.jpg)  
-<sup><sub>*Chữ mi trong không gian*</sub></sup>
+<sup><sub>*Chữ Mi xây bang các khối vuông trong không gian*</sub></sup>
+
+![demo terminal](./assets/demo1.jpg)  
+<sup><sub>*Chữ HUST xây bằng các khôi vuông trong không gian*</sub></sup>
 
 ## 🏗️ Kiến trúc hệ thống
 
