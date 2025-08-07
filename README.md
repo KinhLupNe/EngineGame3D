@@ -15,7 +15,7 @@
 
 ## 📸 Demo
 
-![demo terminal](https://github.com/KinhLupNe/EngineGame3D/assets/demo0.png)  
+![demo terminal](https://github.com/KinhLupNe/EngineGame3D/assets/demo.jpg)  
 <sup><sub>*Chữ mi trong không gian*</sub></sup>
 
 ## 🏗️ Kiến trúc hệ thống
