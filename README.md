@@ -15,8 +15,8 @@
 
 ## 📸 Demo
 
-![demo terminal](https://github.com/KinhLupNe/EngineGame3D/assets/xxx/yyy)  
-<sup><sub>*Hình ảnh minh họa kết quả vẽ cube xoay trong terminal*</sub></sup>
+![demo terminal](https://github.com/KinhLupNe/EngineGame3D/assets/demo.png)  
+<sup><sub>*Chữ mi trong không gian*</sub></sup>
 
 ## 🏗️ Kiến trúc hệ thống
 
