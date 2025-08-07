@@ -1,15 +1,14 @@
+/**
+ * @file GamgRender.h
+ * @brief khởi tạo engine, world
+ * @detail trên thiết kế là nơi xử lí hiện cho game
+ * @detail cup cấp api cho game dev từ engine, không chạm vào quá sâu chi tiết engine
+ * @detail thực tế thì chưa có thời gian làm :v
+ */
 #include "GameRender.h"
 
 GameRender::GameRender(const int &width, const int &height)
-    : renderer(width, height) {}
-void GameRender::drawWorld(const World &world) {
-  auto list = world.getVisualBlockPos();
-  for (auto &v : list) {
-    drawBlock(BlockType::STONE, v);
-  }
+    : renderer(width, height) {
 }
-void GameRender::drawBlock(const BlockType &block, const Vec3 &position) {
-  //  if (block == BlockType::STONE)
-  //  renderer.drawBlock(position, &m);
-  // renderer.loadFromModel(&m);
-}
+
+
