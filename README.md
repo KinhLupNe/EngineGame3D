@@ -16,7 +16,9 @@ EngineGame3D là một trình kết xuất 3D chạy trong terminal được vi�
 ## Demo
 
 ![demo cube](./assets/demo.jpg)
-![demo hust](./assets/demo1.mkv)
+<video controls src="./demo.mp4" style="max-width:100%; height:auto;">
+  Trình duyệt của bạn không hỗ trợ phát video.
+</video>
 
 ## Kiến trúc
 
