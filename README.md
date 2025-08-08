@@ -53,7 +53,7 @@ https://github.com/user-attachments/assets/3aa335b5-0aa1-4bc7-b1d4-7adcd95303ec
 ```
 
 ## Trước pipline
-1.**Model Object** nhưng model tạo bởi các mesh có mặt gần nhau sẽ được tối ưu bằn thuật toán Neirbor-face culling
+1.**Model Object**  model tạo bởi các mesh có mặt gần nhau sẽ được tối ưu bằng thuật toán Neirbor-face culling
 ## Pipeline
 1. **Vertex shader** – chuyển đổi đỉnh bằng ma trận `Model * View * Projection`.
 2. **Cắt xén** – thuật toán Sutherland–Hodgman với sáu mặt phẳng frustum.
