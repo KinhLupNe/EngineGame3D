@@ -5,17 +5,17 @@
 #include "Game/Game/Game.h"
 #include "Geometry/Mesh.h"
 #include "Math/Math.h"
+#include "Utilities/UtilitiesManager.h"
 #include <chrono>
 #include <conio.h>
 #include <cstdlib>
+#include <fstream>
 #include <random>
 #include <string>
 #include <windows.h>
-#include "Utilities/UtilitiesManager.h"
-#include <fstream>
 using namespace std;
 
-//thông số màn hình
+// thông số màn hình
 #define WIDTH 300
 #define HEIGHT 105
 
@@ -43,7 +43,9 @@ int main() {
   while (true) {
     // FPS UPS/ xử lý fps ps
     auto currentTime = std::chrono::high_resolution_clock::now();
-    double elapsed = std::chrono::duration<double, std::nano>(currentTime - previousTime).count();
+    double elapsed =
+        std::chrono::duration<double, std::nano>(currentTime - previousTime)
+            .count();
     previousTime = currentTime;
 
     deltaU += elapsed / timePerUpdate;
@@ -57,16 +59,19 @@ int main() {
     }
     // render update / nơi hiển thị
     if (deltaF >= 1.0) {
-      setColor(5, 0);
       game.updateRender();
       frames++;
       deltaF -= 1.0;
     }
 
-    if (std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastCheck).count() >= 1) {
+    if (std::chrono::duration_cast<std::chrono::seconds>(currentTime -
+                                                         lastCheck)
+            .count() >= 1) {
       lastCheck = currentTime;
       // debug log / hiện thị thông tin fps, ups trên cửa sổ thứ 2
-      DebugLogger::Instance().LogAt(1, 9, "fps: " + std::to_string(frames) + " | ups: " + std::to_string(updates));
+      DebugLogger::Instance().LogAt(1, 9,
+                                    "fps: " + std::to_string(frames) +
+                                        " | ups: " + std::to_string(updates));
       frames = 0;
       updates = 0;
     }

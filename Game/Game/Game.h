@@ -4,8 +4,8 @@
  */
 #ifndef GAME_H
 #define GAME_H
-#include "../GameRender/GameRender.h"
 #include "../Entities/Player.h"
+#include "../GameRender/GameRender.h"
 
 class Game {
 private:
@@ -13,9 +13,9 @@ private:
   Camera cam;
   World world;
   Player player;
-  Model model;
+  std::vector<Model> models;
 
-  //khởi tạo thông số ban đầu của game và enigne
+  // khởi tạo thông số ban đầu của game và enigne
   void init();
 
 public:
@@ -28,44 +28,22 @@ public:
   void updateRender();
 
   // -------------------setter getter--------------------------------
-  GameRender &getGameRender() {
-    return gameRender;
-  }
+  GameRender &getGameRender() { return gameRender; }
 
   void setGameRender(const GameRender &gameRender) {
     this->gameRender = gameRender;
   }
 
-  Camera &getCam() {
-    return cam;
-  }
+  Camera &getCam() { return cam; }
 
-  void setCam(const Camera &cam) {
-    this->cam = cam;
-  }
+  void setCam(const Camera &cam) { this->cam = cam; }
 
-  World &getWorld() {
-    return world;
-  }
+  World &getWorld() { return world; }
 
-  void setWorld(const World &world) {
-    this->world = world;
-  }
+  void setWorld(const World &world) { this->world = world; }
 
-  Player &getPlayer() {
-    return player;
-  }
+  Player &getPlayer() { return player; }
 
-  void setPlayer(const Player &player) {
-    this->player = player;
-  }
-
-  Model &getModel() {
-    return model;
-  }
-
-  void setModel(const Model &model) {
-    this->model = model;
-  }
+  void setPlayer(const Player &player) { this->player = player; }
 };
 #endif

@@ -23,39 +23,23 @@ public:
 
   bool get(int x, int y, int z) const;
 
-  void loadGridFromWord(World *world);
+  void loadGridFromWorld(World *world);
 
   //---getter, setter-------------------
-  int get_w() const {
-    return W;
-  }
+  int get_w() const { return W; }
 
-  void set_w(int w) {
-    W = w;
-  }
+  void set_w(int w) { W = w; }
 
-  int get_h() const {
-    return H;
-  }
+  int get_h() const { return H; }
 
-  void set_h(int h) {
-    H = h;
-  }
+  void set_h(int h) { H = h; }
 
-  int get_d() const {
-    return D;
-  }
+  int get_d() const { return D; }
 
-  void set_d(int d) {
-    D = d;
-  }
+  void set_d(int d) { D = d; }
 
-  std::vector<bool> &get_data() {
-    return data;
-  }
+  std::vector<bool> &get_data() { return data; }
 
-  void set_data(const std::vector<bool> &data) {
-    this->data = data;
-  }
+  void set_data(const std::vector<bool> &data) { this->data = data; }
 };
 #endif

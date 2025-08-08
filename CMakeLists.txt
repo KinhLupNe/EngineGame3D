@@ -46,6 +46,7 @@ add_executable(Engine3D
         Core/Light/Light.h
         Core/Light/AmbientLight.cpp Core/Light/AmbientLight.h
         Core/VoxelGrid.cpp
+        Game/World/Cube.h
 )
 
 # Flags chung cho Debug/Release

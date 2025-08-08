@@ -6,6 +6,7 @@
 #define WORLD_H
 #include "..//..//Math/Math.h"
 #include "Block.h"
+#include <fstream>
 
 #include <vector>
 
@@ -34,37 +35,36 @@ public:
   // trả về  vị tri các block không phải là AIR trong world
   std::vector<Vec3> getVisualBlockPos();
 
+  // gán dữ liệu cho world bằng file text.txt
+  void loadWorldFromFile(const std::string &fileName) {
+    std::ifstream file(fileName);
+    if (!file.is_open()) {
+      throw std::runtime_error("Could not open file: " + fileName);
+    }
+    data.clear();
+    data.resize(width * height * depth, BlockType::AIR);
+    int x, y, z;
+    int blockType;
+    while (file >> x >> y >> z >> blockType) {
+      setBlock(x, y, z, static_cast<BlockType>(blockType));
+    }
+    file.close();
+  }
   // ------------getter, setter-----------------------
-  const std::vector<BlockType> &getData() const {
-    return data;
-  }
+  const std::vector<BlockType> &getData() const { return data; }
 
-  void setData(const std::vector<BlockType> &data) {
-    this->data = data;
-  }
+  void setData(const std::vector<BlockType> &data) { this->data = data; }
 
-  int getWidth() const {
-    return width;
-  }
+  int getWidth() const { return width; }
 
-  void setWidth(int width) {
-    this->width = width;
-  }
+  void setWidth(int width) { this->width = width; }
 
-  int getHeight() const {
-    return height;
-  }
+  int getHeight() const { return height; }
 
-  void setHeight(int height) {
-    this->height = height;
-  }
+  void setHeight(int height) { this->height = height; }
 
-  int getDepth() const {
-    return depth;
-  }
+  int getDepth() const { return depth; }
 
-  void setDepth(int depth) {
-    this->depth = depth;
-  }
+  void setDepth(int depth) { this->depth = depth; }
 };
 #endif

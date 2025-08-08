@@ -1,3 +1,8 @@
+/** * @file Pipeline.h
+ * @brief Pipeline đồ họa hoàn chỉnh
+ * @detail bao gồm các bước từ vertex shader, culling, clip, rasterization,
+ * shading
+ * */
 #ifndef PIPELINE_H
 #define PIPELINE_H
 #include "../Geometry/Vertex.h"
@@ -6,34 +11,34 @@
 #include <vector>
 
 struct Pipeline {
-    // Vertex shader : Lay ma toa trong trong khong gian phoi canh
-    static VertexOutput vertexShader(const Vertex &vertex,
-                                     const Mat4 &modelMatrix,
-                                     const Mat4 &viewMatrix,
-                                     const Mat4 &projectionMatrix);
+  // Vertex shader : Lay ma toa trong trong khong gian phoi canh
+  static VertexOutput vertexShader(const Vertex &vertex,
+                                   const Mat4 &modelMatrix,
+                                   const Mat4 &viewMatrix,
+                                   const Mat4 &projectionMatrix);
 
-    // ghep thanh cac tam giac
-    static std::vector<TriangleOutput>
-    assemble(const std::vector<VertexOutput> &clipVertexs,
-             const std::vector<uint32_t> &idx);
+  // ghep thanh cac tam giac
+  static std::vector<TriangleOutput>
+  assemble(const std::vector<VertexOutput> &clipVertexs,
+           const std::vector<uint32_t> &idx);
 
-    // culling backspace;
-    static bool backFaceCull(const TriangleOutput &triOut);
+  // culling backspace;
+  static bool backFaceCull(const TriangleOutput &triOut);
 
-    // triangle primitive clipping
-    // nằm ngoài trả về rỗng
-    static std::vector<TriangleOutput>
-    primitiveClipping(const TriangleOutput &tri);
+  // triangle primitive clipping
+  // nằm ngoài trả về rỗng
+  static std::vector<TriangleOutput>
+  primitiveClipping(const TriangleOutput &tri);
 
-    // Rasterization
-    static std::vector<VertexOutput> rasterization(const VertexOutput &a,
-                                                   const VertexOutput &b,
-                                                   const VertexOutput &c,
-                                                   const Triangle &t);
+  // Rasterization
+  static std::vector<VertexOutput> rasterization(const VertexOutput &a,
+                                                 const VertexOutput &b,
+                                                 const VertexOutput &c,
+                                                 const Triangle &t);
 
-    //  clip ->ndc->viewport
-    static Vec3 toScreen(const int &width, const int &height,
-                         const Vec4 &clipVertex);
+  //  clip ->ndc->viewport
+  static Vec3 toScreen(const int &width, const int &height,
+                       const Vec4 &clipVertex);
 };
 
 #endif

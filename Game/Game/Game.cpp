@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "../World/Cube.h"
 #include <conio.h>
 #define WIDTH 300
 #define HEIGHT 105
@@ -13,7 +14,7 @@ void Game::init() {
   // khởi tạo game renderer
   gameRender = GameRender(WIDTH, HEIGHT);
 
-  // khởi tạo camera, load vào game renderer, player trỏ tới
+  // khởi tạo camera, load vào game renderer, player
   cam = Camera(Vec3(0, 0, 20), 0, 0, 0.5f, 100.0f,
                (static_cast<float>(WIDTH) / static_cast<float>(HEIGHT)) * 0.5,
                3.14 / 3);
@@ -23,93 +24,31 @@ void Game::init() {
   // khổi tạo world , load vào game render
   world = World(20, 7, 5);
   // world.init();
-  // world.setBlock(0, 2, 3, BlockType::STONE);
-  // H
-  world.setBlock(0, 1, 3, BlockType::STONE);
-
-  world.setBlock(0, 2, 3, BlockType::STONE);
-
-  world.setBlock(0, 3, 3, BlockType::STONE);
-
-  world.setBlock(0, 4, 3, BlockType::STONE);
-
-  world.setBlock(0, 5, 3, BlockType::STONE);
-
-  world.setBlock(1, 3, 3, BlockType::STONE);
-
-  world.setBlock(2, 3, 3, BlockType::STONE);
-
-  world.setBlock(3, 1, 3, BlockType::STONE);
-
-  world.setBlock(3, 2, 3, BlockType::STONE);
-
-  world.setBlock(3, 3, 3, BlockType::STONE);
-
-  world.setBlock(3, 4, 3, BlockType::STONE);
-
-  world.setBlock(3, 5, 3, BlockType::STONE);
-  // U
-  world.setBlock(5, 2, 3, BlockType::STONE);
-  world.setBlock(5, 3, 3, BlockType::STONE);
-
-  world.setBlock(5, 4, 3, BlockType::STONE);
-
-  world.setBlock(5, 5, 3, BlockType::STONE);
-
-  world.setBlock(6, 1, 3, BlockType::STONE);
-
-  world.setBlock(7, 1, 3, BlockType::STONE);
-
-  world.setBlock(8, 2, 3, BlockType::STONE);
-
-  world.setBlock(8, 3, 3, BlockType::STONE);
-
-  world.setBlock(8, 4, 3, BlockType::STONE);
-
-  world.setBlock(8, 5, 3, BlockType::STONE);
-  // S
-  world.setBlock(10, 1, 3, BlockType::STONE);
-
-  world.setBlock(10, 4, 3, BlockType::STONE);
-
-  world.setBlock(11, 1, 3, BlockType::STONE);
-
-  world.setBlock(11, 3, 3, BlockType::STONE);
-
-  world.setBlock(11, 5, 3, BlockType::STONE);
-
-  world.setBlock(12, 2, 3, BlockType::STONE);
-
-  world.setBlock(12, 5, 3, BlockType::STONE);
-
-  // T
-  world.setBlock(14, 5, 3, BlockType::STONE);
-
-  world.setBlock(15, 5, 3, BlockType::STONE);
-
-  world.setBlock(16, 5, 3, BlockType::STONE);
-
-  world.setBlock(15, 4, 3, BlockType::STONE);
-
-  world.setBlock(15, 3, 3, BlockType::STONE);
-
-  world.setBlock(15, 2, 3, BlockType::STONE);
-
-  world.setBlock(15, 1, 3, BlockType::STONE);
-
-  gameRender.setWorld(&world);
-
-  // khởi tạo voxel grid, sinh mesh của world, sinh ra model của worlf, đẩy vào
-  // game render
+  world.loadWorldFromFile("../../../Game/Soure/worldMap.txt");
+  // khởi tạo voxel grid, sinh mesh của world(sinh model từ grid có thuật toán
+  // neibor face-culling)
   VoxelGrid grid(20, 10, 16);
-  grid.loadGridFromWord(gameRender.getWorld());
-  Mesh::buildMesh(grid, gameRender.getNWorld());
-  model = Model(Vec3(0, 0, 0), &gameRender.getNWorld());
-  gameRender.getRenderer().loadFromModel(model);
-  gameRender.getRenderer().getScene().addModel(&model);
+  grid.loadGridFromWorld(&world);
+  Mesh mWorld;
+  Mesh::buildMesh(grid, mWorld);
+
+  // sinh model từ mesh của world
+  models.emplace_back(Vec3(0, 0, 0), &mWorld);
+
+  // model đối tượng thứ 2
+  Mesh cubeMesh = Mesh::createCube(1.0f, 1.0f, 1.0f);
+  Cube cube(Vec3(10, 8, 3), Vec3(1.5, 1.5, 1.5),
+            Vec3(3.14 / 8, 3.14 / 10, 3.14 / 12), cubeMesh);
+  models.emplace_back(cube);
+
+  for (auto &model : models) {
+    gameRender.loadModelToGame(model);
+  }
 }
 
 void Game::updateLogic() {
+  // TODO cần module input riêng biệt, xử lí các logic phưc tạp của vật thể
+  // input
   if (_kbhit()) {
     char ch = _getch();
     if (ch == 's') {
@@ -143,6 +82,17 @@ void Game::updateLogic() {
       player.move(DOWN);
     }
   }
+  // update logic//
+  static float a = 0;
+  a += 0.02f;
+  if (a >= 6.28f) {
+    a = 0;
+  }
+  this->models[1].rotation =
+      this->models[1].rotation + Vec3(0.03f, 0.03f, 0.03f);
+
+  this->models[1].position.x = 8 + cos(a) * 12;
+  this->models[1].position.y = 3 + sin(a) * 8;
 }
 
 void Game::updateRender() { gameRender.getRenderer().present(); }
