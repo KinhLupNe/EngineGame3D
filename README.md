@@ -3,15 +3,8 @@
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg) ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 ![Dependencies](https://img.shields.io/badge/Dependencies-None-critical)
 
-EngineGame3D là một trình kết xuất 3D chạy trong terminal được viết hoàn toàn bằng C++20. Dự án mang tính học thuật: tái hiện pipeline đồ hoạ từ đầu mà không sử dụng OpenGL, SDL hay các thư viện bên ngoài. Engine thực hiện đầy đủ pipeline Model → View → Projection và hiển thị kết quả bằng ký tự ASCII ngay trong cửa sổ console.
+EngineGame3D là một trình kết xuất 3D chạy trong terminal được viết hoàn toàn bằng C++20. Dự án mang tính học thuật: tái hiện pipeline đồ hoạ từ đầu mà không sử dụng OpenGL, SDL hay các thư viện bên ngoài. Engine hiển thị kết quả bằng ký tự ASCII ngay trong cửa sổ console. 
 
-## Tính năng
-
-- Kết xuất các primitive cơ bản và mô hình mesh.
-- Các phép biến đổi Model, World, Camera, Clip và Viewport.
-- Cắt xén sáu mặt phẳng frustum và loại bỏ mặt sau.
-- Quét raster hoá đường ASCII.
-- Điều khiển bàn phím để di chuyển mô hình (`W/S`, `A/D`, `Z/C`).
 
 ## Demo
 
@@ -25,6 +18,15 @@ https://github.com/user-attachments/assets/3aa335b5-0aa1-4bc7-b1d4-7adcd95303ec
 ## Kiến trúc
 
 ```text
+
+          ┌────────┐
+          │ Object │ 
+          └────┬───┘
+               ▼
+               │
+               │   neibor-face culling 
+               │ 
+               ▼
           ┌────────┐
           │ Scene  │
           └────┬───┘
@@ -41,12 +43,18 @@ https://github.com/user-attachments/assets/3aa335b5-0aa1-4bc7-b1d4-7adcd95303ec
               ▼                                    ▼
         Vertex Shader ──▶ Clipping & Culling ──▶ Assembly ──▶ Rasterization
                          (Frustum 6-plane)       (to triangle)   │
-                                                                  ▼
+                                                                 │ 
+                                                                 ▼
+                                                          fragment-shader(lighting)
+                                                                   │
+                                                                   │
+                                                                   ▼
                                                          ASCII Rendering
 ```
 
+## Trước pipline
+1.**Model Object** nhưng model tạo bởi các mesh có mặt gần nhau sẽ được tối ưu bằn thuật toán Neirbor-face culling
 ## Pipeline
-
 1. **Vertex shader** – chuyển đổi đỉnh bằng ma trận `Model * View * Projection`.
 2. **Cắt xén** – thuật toán Sutherland–Hodgman với sáu mặt phẳng frustum.
 3. **Loại bỏ mặt sau** – loại bỏ tam giác quay lưng với camera.
@@ -57,13 +65,16 @@ https://github.com/user-attachments/assets/3aa335b5-0aa1-4bc7-b1d4-7adcd95303ec
 ## Cấu trúc thư mục
 
 ```
-Core/       Tiện ích Buffer và Camera
+Core/       Tiện ích Buffer và Camera, ánh sáng
 Geometry/   Định nghĩa Mesh, Model và Vertex
 Pipeline/   Logic pipeline và cắt xén
 Render/     Bộ kết xuất ASCII
 Scene/      Quản lý cảnh
 Math/       Toán vector và ma trận
 Engine3D.cpp  Điểm vào chương trình
+Tools hàm tiện ích
+Game/ game dựa trên engine
+Debug/ nơi code debug log
 ```
 
 ## Biên dịch
@@ -89,14 +100,8 @@ cmake --build out/build/x64-debug
 
 ## Chạy
 
-Sau khi build, chạy file thực thi (`Engine3D.exe` trên Windows). Cửa sổ terminal sẽ hiển thị một khối lập phương bằng ký tự ASCII; bạn có thể di chuyển mô hình bằng các phím đã liệt kê ở trên.
-
-## Lộ trình
-
-- [ ] Tô phẳng (flat shading)
-- [ ] Minh hoạ bộ đệm độ sâu (Depth/Z)
-- [ ] Tô đầy tam giác
-- [ ] Nhiều mô hình và di chuyển camera
+Sau khi build, chạy file thực thi (`Engine3D.exe` trên Windows).
+Có rất nhiều game mà tôi sẽ phát triển dựa vào engine này, bạn vào thư mục game, chỉ cần gọi ra là trải nghiệm game đó
 
 ## Giấy phép
 
