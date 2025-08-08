@@ -1,25 +1,24 @@
 # EngineGame3D
 
-![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg) ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey) ![Dependencies](https://img.shields.io/badge/Dependencies-None-critical)
+![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg) ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-critical)
 
-EngineGame3D is a small educational 3D software renderer for the terminal.  The engine is written in modern C++20 and rebuilds the
-graphics pipeline from scratch without using OpenGL, SDL, or other external libraries.  It transforms meshes through the full
-Model → View → Projection pipeline and renders the result as ASCII characters directly in the console.
+EngineGame3D là một trình kết xuất 3D chạy trong terminal được viết hoàn toàn bằng C++20. Dự án mang tính học thuật: tái hiện pipeline đồ hoạ từ đầu mà không sử dụng OpenGL, SDL hay các thư viện bên ngoài. Engine thực hiện đầy đủ pipeline Model → View → Projection và hiển thị kết quả bằng ký tự ASCII ngay trong cửa sổ console.
 
-## Features
+## Tính năng
 
-- Render basic primitives and mesh models.
-- Model, world, camera, clip, and viewport transformations.
-- Six-plane frustum clipping and backface culling.
-- ASCII line rasterization.
-- Keyboard controls for moving the model (`W/S`, `A/D`, `Z/C`).
+- Kết xuất các primitive cơ bản và mô hình mesh.
+- Các phép biến đổi Model, World, Camera, Clip và Viewport.
+- Cắt xén sáu mặt phẳng frustum và loại bỏ mặt sau.
+- Quét raster hoá đường ASCII.
+- Điều khiển bàn phím để di chuyển mô hình (`W/S`, `A/D`, `Z/C`).
 
 ## Demo
 
 ![demo cube](./assets/demo.jpg)
 ![demo hust](./assets/demo1.jpg)
 
-## Architecture
+## Kiến trúc
 
 ```text
           ┌────────┐
@@ -44,62 +43,62 @@ Model → View → Projection pipeline and renders the result as ASCII character
 
 ## Pipeline
 
-1. **Vertex shader** – transforms vertices using `Model * View * Projection`.
-2. **Clipping** – Sutherland–Hodgman clipping against six frustum planes.
-3. **Backface culling** – removes triangles facing away from the camera.
-4. **Primitive assembly** – converts index buffers to triangles.
-5. **NDC → Viewport mapping** – maps coordinates to terminal space.
-6. **Rasterization** – draws triangle edges with a simple line interpolation algorithm.
+1. **Vertex shader** – chuyển đổi đỉnh bằng ma trận `Model * View * Projection`.
+2. **Cắt xén** – thuật toán Sutherland–Hodgman với sáu mặt phẳng frustum.
+3. **Loại bỏ mặt sau** – loại bỏ tam giác quay lưng với camera.
+4. **Lắp ráp primitive** – chuyển bộ chỉ số thành các tam giác.
+5. **NDC → Viewport** – ánh xạ toạ độ lên không gian terminal.
+6. **Rasterization** – vẽ cạnh tam giác bằng thuật toán nội suy tuyến tính đơn giản.
 
-## Directory Structure
+## Cấu trúc thư mục
 
 ```
-Core/       Buffer and Camera utilities
-Geometry/   Mesh, Model, and Vertex definitions
-Pipeline/   Pipeline logic and culling
-Render/     ASCII renderer
-Scene/      Scene management
-Math/       Vector and matrix math
-Engine3D.cpp  Entry point
+Core/       Tiện ích Buffer và Camera
+Geometry/   Định nghĩa Mesh, Model và Vertex
+Pipeline/   Logic pipeline và cắt xén
+Render/     Bộ kết xuất ASCII
+Scene/      Quản lý cảnh
+Math/       Toán vector và ma trận
+Engine3D.cpp  Điểm vào chương trình
 ```
 
-## Build
+## Biên dịch
 
-### Prerequisites
+### Yêu cầu
 
-- CMake 3.8 or later
-- A compiler with C++20 support (MSVC, GCC, Clang)
+- CMake 3.8 trở lên
+- Trình biên dịch hỗ trợ C++20 (MSVC, GCC, Clang)
 
-### Configure and Build
+### Cấu hình và build
 
 ```bash
 cmake -S . -B build
 cmake --build build
 ```
 
-Or using presets if available:
+Hoặc sử dụng preset nếu có:
 
 ```bash
 cmake --preset x64-debug
 cmake --build out/build/x64-debug
 ```
 
-## Run
+## Chạy
 
-After building, run the produced executable (`Engine3D.exe` on Windows).  A terminal window will display an ASCII-rendered cube that
-can be moved with the keyboard controls listed above.
+Sau khi build, chạy file thực thi (`Engine3D.exe` trên Windows). Cửa sổ terminal sẽ hiển thị một khối lập phương bằng ký tự ASCII; bạn có thể di chuyển mô hình bằng các phím đã liệt kê ở trên.
 
-## Roadmap
+## Lộ trình
 
-- [ ] Flat shading
-- [ ] Depth (Z) buffer visualization
-- [ ] Triangle filling
-- [ ] Multiple models and camera movement
+- [ ] Tô phẳng (flat shading)
+- [ ] Minh hoạ bộ đệm độ sâu (Depth/Z)
+- [ ] Tô đầy tam giác
+- [ ] Nhiều mô hình và di chuyển camera
 
-## License
+## Giấy phép
 
 MIT License
 
 ---
 
-This project was created for learning purposes and reimplements key pieces of a graphics pipeline by hand.
+Dự án được tạo ra cho mục đích học tập và tái hiện các thành phần chính của pipeline đồ hoạ bằng tay.
+
