@@ -86,7 +86,7 @@ Debug/ nơi code debug log
 
 ### Cấu hình và build
 ``` terminal
-Chỉnh chiều rộng lên trên 300, chiều dài trên 105 , cũng như chỉnh kí tự nhỏ xuống khoảng 5,6.
+Chỉnh chiều ngang terminal lên trên 300, chiều dọc trên 105 , cũng như chỉnh kí tự nhỏ xuống khoảng 6.
 
 ```bash
 cmake -S . -B build
