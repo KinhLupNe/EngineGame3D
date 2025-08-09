@@ -114,5 +114,5 @@ MIT License
 
 ---
 
-Dự án được tạo ra cho mục đích học tập và tái hiện các thành phần chính của pipeline đồ hoạ bằng tay.
+Dự án được tạo ra cho mục đích học tập và tái hiện các thành phần chính của pipeline đồ hoa from scratch
 
