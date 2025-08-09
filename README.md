@@ -85,6 +85,8 @@ Debug/ nơi code debug log
 - Trình biên dịch hỗ trợ C++20 (MSVC, GCC, Clang)
 
 ### Cấu hình và build
+``` terminal
+Chỉnh chiều rộng lên trên 300, chiều dài trên 105 , cũng như chỉnh kí tự nhỏ xuống khoảng 5,6.
 
 ```bash
 cmake -S . -B build
