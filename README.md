@@ -17,6 +17,9 @@ https://github.com/user-attachments/assets/3aa335b5-0aa1-4bc7-b1d4-7adcd95303ec
 
 ## Kiến trúc
 
+![pipelineRendering](https://github.com/user-attachments/assets/edbf6529-2360-49b4-bc6d-6f5ba19ba53c)
+
+
 ```text
 
           ┌────────┐
