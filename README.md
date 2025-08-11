@@ -3,7 +3,7 @@
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg) ![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 ![Dependencies](https://img.shields.io/badge/Dependencies-None-critical)
 
-EngineGame3D là một trình kết xuất 3D chạy trong terminal được viết hoàn toàn bằng C++20. Dự án mang tính học thuật: tái hiện pipeline đồ hoạ từ đầu mà không sử dụng OpenGL, SDL hay các thư viện bên ngoài. Engine hiển thị kết quả bằng ký tự ASCII ngay trong cửa sổ console. 
+EngineGame3D là một trình kết xuất 3D chạy trong terminal . Dự án mang tính học thuật: tái hiện pipeline đồ hoạ từ đầu mà không sử dụng OpenGL, SDL hay các thư viện bên ngoài. Engine hiển thị kết quả bằng ký tự ASCII ngay trong cửa sổ console. 
 
 
 ## Demo
