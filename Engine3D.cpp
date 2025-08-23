@@ -1,23 +1,19 @@
 ﻿
-#include "Engine3D.h"
-#include "Core/Buffer.h"
 #include "Debugger/DebugLogger.h"
 #include "Game/Game/Game.h"
-#include "Geometry/Mesh.h"
-#include "Math/Math.h"
+
 #include "Utilities/UtilitiesManager.h"
 #include <chrono>
 #include <conio.h>
-#include <cstdlib>
-#include <fstream>
-#include <random>
+
 #include <string>
 #include <windows.h>
 using namespace std;
 
 // thông số màn hình
-#define WIDTH 300
-#define HEIGHT 105
+#define WIDTH 200
+#define HEIGHT 70
+// TODO ray-casting
 
 int main() {
   // khởi tạo game

@@ -1,0 +1,5 @@
+E:/IT/devGame3D/Engine3D/CMakeFiles/Engine3D.dir
+E:/IT/devGame3D/Engine3D/CMakeFiles/ALL_BUILD.dir
+E:/IT/devGame3D/Engine3D/CMakeFiles/ZERO_CHECK.dir
+E:/IT/devGame3D/Engine3D/tools/PSLogger/CMakeFiles/PSLogger.dir
+E:/IT/devGame3D/Engine3D/tools/PSLogger/CMakeFiles/ALL_BUILD.dir

@@ -1,0 +1,146 @@
+[
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Engine3D.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Engine3D.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Engine3D.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Engine3D.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Geometry\\Mesh.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Geometry\\Mesh.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Geometry\\Mesh.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Geometry\\Mesh.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Geometry\\Vertex.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Geometry\\Vertex.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Geometry\\Vertex.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Geometry\\Vertex.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Geometry\\Model.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Geometry\\Model.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Geometry\\Model.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Geometry\\Model.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Core\\Buffer.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Core\\Buffer.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Core\\Buffer.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Core\\Buffer.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Core\\Camera.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Core\\Camera.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Core\\Camera.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Core\\Camera.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Render\\Render.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Render\\Render.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Render\\Render.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Render\\Render.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Render\\FrameBuffer.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Render\\FrameBuffer.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Render\\FrameBuffer.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Render\\FrameBuffer.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Math\\Math.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Math\\Math.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Math\\Math.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Math\\Math.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Pipeline\\Pipeline.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Pipeline\\Pipeline.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Pipeline\\Pipeline.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Pipeline\\Pipeline.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Pipeline\\Culling.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Pipeline\\Culling.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Pipeline\\Culling.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Pipeline\\Culling.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Pipeline\\Rasterization.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Pipeline\\Rasterization.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Pipeline\\Rasterization.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Pipeline\\Rasterization.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Scene\\Scene.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Scene\\Scene.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Scene\\Scene.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Scene\\Scene.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Debugger\\DebugLogger.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Debugger\\DebugLogger.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Debugger\\DebugLogger.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Debugger\\DebugLogger.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Game\\GameRender\\GameRender.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Game\\GameRender\\GameRender.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Game\\GameRender\\GameRender.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Game\\GameRender\\GameRender.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Game\\World\\Block.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Game\\World\\Block.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Game\\World\\Block.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Game\\World\\Block.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Game\\World\\World.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Game\\World\\World.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Game\\World\\World.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Game\\World\\World.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Game\\Game\\Game.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Game\\Game\\Game.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Game\\Game\\Game.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Game\\Game\\Game.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Game\\Entities\\Player.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Game\\Entities\\Player.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Game\\Entities\\Player.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Game\\Entities\\Player.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Pipeline\\FragmentShader.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Pipeline\\FragmentShader.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Pipeline\\FragmentShader.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Pipeline\\FragmentShader.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Core\\Light\\DistantLight.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Core\\Light\\DistantLight.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Core\\Light\\DistantLight.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Core\\Light\\DistantLight.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Core\\Light\\AmbientLight.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Core\\Light\\AmbientLight.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Core\\Light\\AmbientLight.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Core\\Light\\AmbientLight.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\Engine3D.dir\\Core\\VoxelGrid.cpp.obj /FdCMakeFiles\\Engine3D.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\Core\\VoxelGrid.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\Core\\VoxelGrid.cpp",
+  "output": "CMakeFiles\\Engine3D.dir\\Core\\VoxelGrid.cpp.obj"
+},
+{
+  "directory": "E:/IT/devGame3D/Engine3D/out/build/x64-debug",
+  "command": "C:\\PROGRA~1\\MICROS~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1444~1.352\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DWINVER=0x0501 -D_WIN32_WINNT=0x0501 /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 -g -O0 /Fotools\\PSLogger\\CMakeFiles\\PSLogger.dir\\PSLogger.cpp.obj /Fdtools\\PSLogger\\CMakeFiles\\PSLogger.dir\\ /FS -c E:\\IT\\devGame3D\\Engine3D\\tools\\PSLogger\\PSLogger.cpp",
+  "file": "E:\\IT\\devGame3D\\Engine3D\\tools\\PSLogger\\PSLogger.cpp",
+  "output": "tools\\PSLogger\\CMakeFiles\\PSLogger.dir\\PSLogger.cpp.obj"
+}
+]

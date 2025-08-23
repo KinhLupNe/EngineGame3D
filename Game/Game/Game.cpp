@@ -1,8 +1,8 @@
 #include "Game.h"
 #include "../World/Cube.h"
 #include <conio.h>
-#define WIDTH 300
-#define HEIGHT 105
+#define WIDTH 200
+#define HEIGHT 75
 Game::Game() { init(); }
 
 Game::~Game() = default;
