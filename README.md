@@ -85,22 +85,14 @@ Debug/ nơi code debug log
 ### Yêu cầu
 
 - CMake 3.8 trở lên
-- Trình biên dịch hỗ trợ C++20 (MSVC, GCC, Clang)
+- Trình biên dịch hỗ trợ C++20 MSVC: cl
 
 ### Cấu hình và build
 ``` terminal
 Chỉnh chiều ngang terminal lên trên 300, chiều dọc trên 105 , cũng như chỉnh kí tự nhỏ xuống khoảng 6.
 
 ```bash
-cmake -S . -B build
-cmake --build build
-```
-
-Hoặc sử dụng preset nếu có:
-
-```bash
-cmake --preset x64-debug
-cmake --build out/build/x64-debug
+.\build.cmd
 ```
 
 ## Chạy
